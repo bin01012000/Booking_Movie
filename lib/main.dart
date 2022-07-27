@@ -1,4 +1,3 @@
-import 'package:booking_movie_ticket/app/common/utils/value/app_color.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,9 +24,10 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Booking Movie Ticket',
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(primaryColor: Colors.transparent),
           initialRoute: '/',
           routes: {
-            '/': (context) => const HomeScreen(),
+            '/': (context) => HomeScreen(),
           },
         );
       },

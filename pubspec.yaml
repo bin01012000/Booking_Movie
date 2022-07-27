@@ -43,6 +43,7 @@ dependencies:
   shared_preferences: ^2.0.15
   gradient_like_css: ^1.0.1
   flutter_svg: ^1.0.3
+  rolling_bottom_bar: ^0.2.2
 
 dev_dependencies:
   flutter_test:

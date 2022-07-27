@@ -1,3 +1,4 @@
+import 'package:booking_movie_ticket/app/common/utils/value/app_color.dart';
 import 'package:booking_movie_ticket/app/common/utils/value/styles/dimens.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,6 +47,15 @@ class AppTextStyle {
     decoration: TextDecoration.none,
   ));
 
+  static final TextStyle st17700 = GoogleFonts.poppins(
+      textStyle: TextStyle(
+    color: Colors.white,
+    fontSize: Dimens.fontSize17,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w700,
+    decoration: TextDecoration.none,
+  ));
+
   static final TextStyle st14700 = GoogleFonts.poppins(
       textStyle: TextStyle(
     color: Colors.white,
@@ -59,6 +69,14 @@ class AppTextStyle {
       textStyle: TextStyle(
     color: Colors.white,
     fontSize: Dimens.fontSize20,
+    fontWeight: FontWeight.w700,
+    decoration: TextDecoration.none,
+  ));
+
+  static final TextStyle placeholder = GoogleFonts.poppins(
+      textStyle: TextStyle(
+    color: AppColors.kPlaceholderColor,
+    fontSize: Dimens.fontSize17,
     fontWeight: FontWeight.w700,
     decoration: TextDecoration.none,
   ));

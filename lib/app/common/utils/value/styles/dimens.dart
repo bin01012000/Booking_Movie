@@ -8,6 +8,7 @@ class Dimens {
   static final double fontSize14 = 14.sp;
   static final double fontSize15 = 15.sp;
   static final double fontSize16 = 16.sp;
+  static final double fontSize17 = 17.sp;
   static final double fontSize18 = 18.sp;
   static final double fontSize20 = 20.sp;
   static final double fontSize22 = 22.sp;
