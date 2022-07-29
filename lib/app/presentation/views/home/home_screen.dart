@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
             style: AppTextStyle.st20700,
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color.fromRGBO(0, 0, 0, 0),
         body: const BodyHome(),
         //   bottomNavigationBar: RollingBottomBar(
         //   controller: _controller,
