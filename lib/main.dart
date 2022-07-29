@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(primaryColor: Colors.transparent),
           initialRoute: '/',
           routes: {
-            '/': (context) => HomeScreen(),
+            '/': (context) => const HomeScreen(),
           },
         );
       },

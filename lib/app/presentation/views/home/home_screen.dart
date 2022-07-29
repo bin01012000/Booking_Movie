@@ -1,12 +1,7 @@
-import 'dart:ui';
-
 import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/widgets/body_home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_like_css/gradient_like_css.dart';
-import 'package:rolling_bottom_bar/rolling_bottom_bar.dart';
-import 'package:rolling_bottom_bar/rolling_bottom_bar_item.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
