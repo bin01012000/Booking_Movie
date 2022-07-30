@@ -29,6 +29,14 @@ class AppTextStyle {
     fontWeight: FontWeight.w500,
     decoration: TextDecoration.none,
   ));
+  static final TextStyle st15500 = GoogleFonts.poppins(
+      textStyle: TextStyle(
+    color: Colors.white,
+    letterSpacing: 0.5,
+    fontSize: Dimens.fontSize15,
+    fontWeight: FontWeight.w500,
+    decoration: TextDecoration.none,
+  ));
 
   static final TextStyle st14500 = GoogleFonts.poppins(
       textStyle: TextStyle(
@@ -53,6 +61,22 @@ class AppTextStyle {
     fontSize: Dimens.fontSize17,
     letterSpacing: 0.5,
     fontWeight: FontWeight.w700,
+    decoration: TextDecoration.none,
+  ));
+  static final TextStyle st17500 = GoogleFonts.poppins(
+      textStyle: TextStyle(
+    color: Colors.white,
+    fontSize: Dimens.fontSize17,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w500,
+    decoration: TextDecoration.none,
+  ));
+  static final TextStyle st15400 = GoogleFonts.poppins(
+      textStyle: TextStyle(
+    color: Colors.white,
+    fontSize: Dimens.fontSize15,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w400,
     decoration: TextDecoration.none,
   ));
 
