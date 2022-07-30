@@ -14,16 +14,15 @@ class DateTimeBody extends StatefulWidget {
 }
 
 class _DateTimeBodyState extends State<DateTimeBody> {
-  // ScrollController scrollController = ScrollController();
-  // var _currPageValue = 0.0;
-  // void initState() {
-  //   super.initState();
-  //   scrollController.addListener(() {
-  //     setState(() {
-
-  //     });
-  //   })
-  // }
+  static const List<Map<String, String>> _fakeData = [
+    {"index": "1", "date": "Mon", "day": "20"},
+    {"index": "2", "date": "Tue", "day": "21"},
+    {"index": "3", "date": "Wed", "day": "22"},
+    {"index": "4", "date": "Thu", "day": "23"},
+    {"index": "5", "date": "Fri", "day": "24"},
+    {"index": "6", "date": "Sat", "day": "25"},
+    {"index": "7", "date": "Sun", "day": "26"},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ class _DateTimeBodyState extends State<DateTimeBody> {
         child: ListView.separated(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: 10,
+            itemCount: 7,
             separatorBuilder: (context, _) => SizedBox(
                   width: 20.sp,
                 ),
@@ -53,9 +52,19 @@ class _DateTimeBodyState extends State<DateTimeBody> {
           begin: Alignment.topLeft,
           end: Alignment.centerRight,
         ),
-        onPressed: () {},
-        child: Center(
-          child: Text("Sat 23", style: AppTextStyle.st15400),
+        onPressed: () => {},
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(_fakeData[index]['date'].toString(),
+                  style: AppTextStyle.st15400),
+            ),
+            Center(
+              child: Text(_fakeData[index]['day'].toString(),
+                  style: AppTextStyle.st15700),
+            ),
+          ],
         ));
   }
 }

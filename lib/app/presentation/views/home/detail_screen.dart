@@ -15,7 +15,15 @@ import '../../../widgets/icon_app.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
-
+  static const List<Map<String, String>> _fakeData = [
+    {
+      "index": "1",
+      "title": "Doctor Strange",
+      "title2": "in the Multiverse of Madness",
+      "content":
+          "Dr. Stephen Strange casts a forbidden spell that opens the doorway to the multiverse, including alternate versions of... read more"
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,7 +55,7 @@ class DetailScreen extends StatelessWidget {
                     stops: [0, 0.7],
                   ),
                 ),
-                padding: EdgeInsets.only(left: 1.sp, top: 0),
+                padding: EdgeInsets.only(left: 1.sp, top: 0.sp),
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/imgDetail.jpeg"),
@@ -103,23 +111,19 @@ class DetailScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Center(
-                      child: Text(
-                        "Doctor Strange ",
-                        style: AppTextStyle.st20700,
-                      ),
+                      child: Text(_fakeData[0]['title'].toString(),
+                          style: AppTextStyle.st20700),
                     ),
                     Center(
-                      child: Text(
-                        "in the Multiverse of Madness ",
-                        style: AppTextStyle.st14700,
-                      ),
+                      child: Text(_fakeData[0]['title2'].toString(),
+                          style: AppTextStyle.st14700),
                     ),
                     SizedBox(
                       height: 30.sp,
                     ),
                     Center(
                       child: Text(
-                        "Dr. Stephen Strange casts a forbidden spell that opens the doorway to the multiverse, including alternate versions of... read more",
+                        _fakeData[0]['content'].toString(),
                         style: AppTextStyle.st15500,
                         textAlign: TextAlign.center,
                       ),
@@ -137,12 +141,16 @@ class DetailScreen extends StatelessWidget {
                       height: 30.sp,
                     ),
                     Container(
-                        height: 90, width: 350, child: const DateTimeBody()),
+                        height: 90.sp,
+                        width: 350.sp,
+                        child: const DateTimeBody()),
                     SizedBox(
                       height: 30.sp,
                     ),
                     Container(
-                        height: 40, width: 350, child: const TimeButton()),
+                        height: 40.sp,
+                        width: 350.sp,
+                        child: const TimeButton()),
                     SizedBox(
                       height: 30.sp,
                     ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UnicornOutlineButton extends StatelessWidget {
   final _GradientPainter _painter;
@@ -29,9 +30,9 @@ class UnicornOutlineButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(_radius),
           onTap: _callback,
           child: Container(
-            width: 50,
-            height: 80,
-            margin: EdgeInsets.only(left: 2, right: 2, top: 2),
+            width: 50.sp,
+            height: 80.sp,
+            margin: EdgeInsets.only(left: 2.sp, right: 2.sp, top: 2.sp),
             decoration: BoxDecoration(
                 gradient: const LinearGradient(
                   colors: [
@@ -41,7 +42,7 @@ class UnicornOutlineButton extends StatelessWidget {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                 ),
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10.sp)),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,

@@ -79,6 +79,14 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
     decoration: TextDecoration.none,
   ));
+  static final TextStyle st15700 = GoogleFonts.poppins(
+      textStyle: TextStyle(
+    color: Colors.white,
+    fontSize: Dimens.fontSize15,
+    letterSpacing: 0.5,
+    fontWeight: FontWeight.w700,
+    decoration: TextDecoration.none,
+  ));
 
   static final TextStyle st14700 = GoogleFonts.poppins(
       textStyle: TextStyle(
