@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
+import 'package:booking_movie_ticket/app/presentation/views/home/choose_seat_screen.dart';
+import 'package:booking_movie_ticket/app/presentation/views/home/home_screen.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/widgets/body_home.dart';
 import 'package:booking_movie_ticket/app/widgets/background_color_position.dart';
 import 'package:booking_movie_ticket/app/widgets/time_button.dart';
@@ -12,6 +14,7 @@ import 'package:rolling_bottom_bar/rolling_bottom_bar.dart';
 import 'package:rolling_bottom_bar/rolling_bottom_bar_item.dart';
 import '../../../widgets/date_time.dart';
 import '../../../widgets/icon_app.dart';
+import '../../../widgets/raiseButton.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
@@ -24,6 +27,7 @@ class DetailScreen extends StatelessWidget {
           "Dr. Stephen Strange casts a forbidden spell that opens the doorway to the multiverse, including alternate versions of... read more"
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,7 +68,7 @@ class DetailScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                  top: 55.sp,
+                  top: 70.sp,
                   left: 20.sp,
                   right: 20.sp,
                   child: Row(
@@ -85,7 +89,10 @@ class DetailScreen extends StatelessWidget {
                           Icons.arrow_back,
                           color: Colors.white,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                        },
                       ),
                       UnicornOutlineButton(
                         strokeWidth: 1,
@@ -152,30 +159,23 @@ class DetailScreen extends StatelessWidget {
                         width: 350.sp,
                         child: const TimeButton()),
                     SizedBox(
-                      height: 30.sp,
+                      height: 20.sp,
                     ),
-                    Container(
-                      height: 60.sp,
-                      width: 350.sp,
-                      decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color.fromRGBO(182, 17, 107, 1),
-                              Color.fromRGBO(59, 21, 120, 1),
-                            ],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
-                          borderRadius: BorderRadius.circular(20.sp)),
-                      child: Center(
-                        child: Text(
-                          "Reservation",
-                          style: AppTextStyle.st17500,
-                        ),
+                    RaisedGradientButton(
+                      child: Text('Reservation', style: AppTextStyle.st17500),
+                      gradient: const LinearGradient(
+                        colors: <Color>[
+                          Color.fromRGBO(182, 17, 107, 1),
+                          Color.fromRGBO(59, 21, 120, 1),
+                        ],
                       ),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ChooseSeat()));
+                      },
                     ),
                     SizedBox(
-                      height: 10.sp,
+                      height: 20.sp,
                     ),
                   ],
                 ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:booking_movie_ticket/app/widgets/dateTime_Border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../common/utils/value/styles/app_text_style.dart';
 
@@ -24,6 +25,12 @@ class _DateTimeBodyState extends State<DateTimeBody> {
     {"index": "7", "date": "Sun", "day": "26"},
   ];
 
+  int _selectedIndex = 0;
+
+  _onSelected(int index) {
+    setState(() => _selectedIndex = index);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
@@ -44,15 +51,29 @@ class _DateTimeBodyState extends State<DateTimeBody> {
     return UnicornOutlineButton(
         strokeWidth: 1,
         radius: 10.sp,
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromRGBO(9, 251, 211, 1),
-            Color.fromRGBO(9, 251, 211, 0)
-          ],
+        gradient: LinearGradient(
+          colors: _selectedIndex != null && _selectedIndex == index
+              ? [
+                  const Color.fromRGBO(254, 83, 187, 1),
+                  const Color.fromRGBO(9, 251, 211, 0)
+                ]
+              : [
+                  const Color.fromRGBO(9, 251, 211, 1),
+                  const Color.fromRGBO(9, 251, 211, 0)
+                ],
           begin: Alignment.topLeft,
           end: Alignment.centerRight,
         ),
-        onPressed: () => {},
+        onPressed: () => _onSelected(index),
+        background: _selectedIndex != null && _selectedIndex == index
+            ? [
+                const Color.fromRGBO(182, 17, 107, 1),
+                const Color.fromRGBO(33, 35, 47, 1),
+              ]
+            : [
+                const Color.fromRGBO(46, 19, 113, 1),
+                const Color.fromRGBO(33, 35, 47, 1),
+              ],
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

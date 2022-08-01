@@ -1,44 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class UnicornOutlineButton extends StatelessWidget {
+class UnicornOutlineButton extends StatefulWidget {
   final _GradientPainter _painter;
   final Widget _child;
   final VoidCallback _callback;
   final double _radius;
+  final List<Color> _background;
 
-  UnicornOutlineButton({
-    required double strokeWidth,
-    required double radius,
-    required Gradient gradient,
-    required Widget child,
-    required VoidCallback onPressed,
-  })  : this._painter = _GradientPainter(
+  UnicornOutlineButton(
+      {required double strokeWidth,
+      required double radius,
+      required Gradient gradient,
+      required Widget child,
+      required VoidCallback onPressed,
+      required List<Color> background})
+      : _painter = _GradientPainter(
             strokeWidth: strokeWidth, radius: radius, gradient: gradient),
-        this._child = child,
-        this._callback = onPressed,
-        this._radius = radius;
+        _child = child,
+        _callback = onPressed,
+        _background = background,
+        _radius = radius;
 
+  @override
+  State<UnicornOutlineButton> createState() => _UnicornOutlineButtonState();
+}
+
+class _UnicornOutlineButtonState extends State<UnicornOutlineButton> {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _painter,
+      painter: widget._painter,
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
-        onTap: _callback,
+        onTap: widget._callback,
         child: InkWell(
-          borderRadius: BorderRadius.circular(_radius),
-          onTap: _callback,
+          borderRadius: BorderRadius.circular(widget._radius),
+          onTap: widget._callback,
           child: Container(
             width: 50.sp,
             height: 80.sp,
-            margin: EdgeInsets.only(left: 2.sp, right: 2.sp, top: 2.sp),
+            margin: EdgeInsets.only(left: 1.sp, right: 1.sp, top: 1.sp),
             decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [
-                    Color.fromRGBO(46, 19, 113, 1),
-                    Color.fromRGBO(33, 35, 47, 1),
-                  ],
+                gradient: LinearGradient(
+                  colors: widget._background,
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                 ),
@@ -47,7 +52,7 @@ class UnicornOutlineButton extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                _child,
+                widget._child,
               ],
             ),
           ),
