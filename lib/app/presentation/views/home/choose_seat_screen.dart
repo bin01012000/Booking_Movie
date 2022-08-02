@@ -1,19 +1,19 @@
+import 'package:booking_movie_ticket/app/presentation/views/home/mobileTicket_screen.dart';
 import 'package:booking_movie_ticket/app/widgets/arc_paint.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_like_css/gradient_like_css.dart';
 
 import '../../../common/utils/value/styles/app_text_style.dart';
+import '../../../widgets/button_buy.dart';
 import '../../../widgets/icon_app.dart';
 import '../../../widgets/list_seats.dart';
 
 class ChooseSeat extends StatelessWidget {
   ChooseSeat({Key? key}) : super(key: key);
   static const IconData chair = IconData(0xe14d, fontFamily: 'MaterialIcons');
+
   bool pressAttention = false;
-  void _onSearchButtonPressed() {
-    print('pressed');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,7 @@ class ChooseSeat extends StatelessWidget {
               child: MyGridView(),
             ),
             Container(
-              margin: EdgeInsets.only(top: 430.sp),
+              margin: EdgeInsets.only(top: 500.sp),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -123,6 +123,108 @@ class ChooseSeat extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Image.asset("assets/images/Base.png"),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        Padding(
+                            padding:
+                                EdgeInsets.only(left: 10.sp, bottom: 60.sp)),
+                        const Icon(
+                          Icons.calendar_month_outlined,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 10.sp),
+                        Text(
+                          "April 23, 2022",
+                          style: AppTextStyle.st15400,
+                        ),
+                        SizedBox(width: 10.sp),
+                        Icon(
+                          Icons.brightness_1,
+                          color: Colors.white,
+                          size: 10.sp,
+                        ),
+                        SizedBox(width: 10.sp),
+                        Text(
+                          "6 p.m.",
+                          style: AppTextStyle.st15400,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Padding(padding: EdgeInsets.only(left: 10.sp)),
+                        const Icon(
+                          Icons.airplane_ticket,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 10.sp),
+                        Text(
+                          "VIP Section",
+                          style: AppTextStyle.st15400,
+                        ),
+                        SizedBox(width: 10.sp),
+                        Icon(
+                          Icons.brightness_1,
+                          color: Colors.white,
+                          size: 10.sp,
+                        ),
+                        SizedBox(width: 10.sp),
+                        Text(
+                          "Seat 9,10",
+                          style: AppTextStyle.st15400,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Padding(
+                            padding:
+                                EdgeInsets.only(left: 10.sp, bottom: 110.sp)),
+                        const Icon(
+                          Icons.shopping_cart_rounded,
+                          color: Colors.white,
+                        ),
+                        SizedBox(width: 10.sp),
+                        Text(
+                          "Total: 30",
+                          style: AppTextStyle.st15400,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Positioned(
+                    right: 15.sp,
+                    bottom: 70.sp,
+                    child: ButtonBuy(
+                      strokeWidth: 1,
+                      radius: 40.sp,
+                      gradient: const LinearGradient(
+                        colors: [
+                          Color.fromRGBO(96, 255, 202, 1),
+                          Color.fromRGBO(96, 255, 202, 0)
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      child: Text(
+                        "Buy",
+                        style: AppTextStyle.st15400,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => MobileTicket()));
+                      },
+                    ))
+              ],
             )
           ],
         ),

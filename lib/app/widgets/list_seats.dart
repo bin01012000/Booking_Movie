@@ -51,6 +51,14 @@ class _MyGridViewState extends State<MyGridView> {
     ListItem(isSelected: false, icon: Icons.chair),
     ListItem(isSelected: false, icon: Icons.chair),
     ListItem(isSelected: true, icon: Icons.chair),
+    ListItem(isSelected: true, icon: Icons.chair),
+    ListItem(isSelected: false, icon: Icons.chair),
+    ListItem(isSelected: true, icon: Icons.chair),
+    ListItem(isSelected: true, icon: Icons.chair),
+    ListItem(isSelected: true, icon: Icons.chair),
+    ListItem(isSelected: true, icon: Icons.chair),
+    ListItem(isSelected: false, icon: Icons.chair),
+    ListItem(isSelected: true, icon: Icons.chair),
   ];
   // set an int with value -1 since no card has been selected
   int selectedCard = -1;
