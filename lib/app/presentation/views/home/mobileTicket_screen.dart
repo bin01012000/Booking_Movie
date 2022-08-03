@@ -1,12 +1,11 @@
-import 'package:booking_movie_ticket/app/widgets/arc_paint.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_like_css/gradient_like_css.dart';
-
+import 'package:ticket_widget/ticket_widget.dart';
 import '../../../common/utils/value/styles/app_text_style.dart';
-import '../../../widgets/button_buy.dart';
+
+import '../../../widgets/Ticket.dart';
 import '../../../widgets/icon_app.dart';
-import '../../../widgets/list_seats.dart';
 
 class MobileTicket extends StatelessWidget {
   MobileTicket({Key? key}) : super(key: key);
@@ -72,6 +71,14 @@ class MobileTicket extends StatelessWidget {
                       ),
                     ],
                   )),
+              const Center(
+                child: TicketWidget(
+                  width: 250,
+                  height: 460,
+                  isCornerRounded: true,
+                  child: TicketData(),
+                ),
+              ),
             ],
           )),
     );
