@@ -56,12 +56,12 @@ class TicketData extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 10),
         Padding(
-          padding: const EdgeInsets.only(top: 20.0, left: 30.0, right: 30.0),
+          padding: const EdgeInsets.only(top: 1.0, left: 30.0, right: 30.0),
           child: Container(
             width: 250.0,
-            height: 60.0,
+            height: 50.0,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/Code barre.png'),

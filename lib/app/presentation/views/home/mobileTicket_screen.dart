@@ -27,56 +27,73 @@ class MobileTicket extends StatelessWidget {
                   top: 70.sp,
                   left: 20.sp,
                   right: 20.sp,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      UnicornOutlineButton(
-                          strokeWidth: 1,
-                          radius: 40.sp,
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color.fromRGBO(96, 255, 202, 1),
-                              Color.fromRGBO(96, 255, 202, 0)
-                            ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          UnicornOutlineButton(
+                              strokeWidth: 1,
+                              radius: 40.sp,
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromRGBO(96, 255, 202, 1),
+                                  Color.fromRGBO(96, 255, 202, 0)
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                              child: const Icon(
+                                Icons.arrow_back,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              }),
+                          Text(
+                            "Mobile Ticket",
+                            style: AppTextStyle.st20700,
                           ),
-                          child: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
+                          UnicornOutlineButton(
+                            strokeWidth: 1,
+                            radius: 40.sp,
+                            gradient: const LinearGradient(
+                              colors: [
+                                Color.fromRGBO(96, 255, 202, 1),
+                                Color.fromRGBO(96, 255, 202, 0)
+                              ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                            ),
+                            child: const Icon(
+                              Icons.calendar_month_outlined,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {},
                           ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          }),
-                      Text(
-                        "Mobile Ticket",
-                        style: AppTextStyle.st20700,
+                        ],
                       ),
-                      UnicornOutlineButton(
-                        strokeWidth: 1,
-                        radius: 40.sp,
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color.fromRGBO(96, 255, 202, 1),
-                            Color.fromRGBO(96, 255, 202, 0)
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                      SizedBox(
+                        height: 20.sp,
+                      ),
+                      Center(
+                        child: Text(
+                          'Once you buy a movie ticket simply scan the barcode to acces to your movie.',
+                          style: AppTextStyle.st17500,
+                          textAlign: TextAlign.center,
                         ),
-                        child: const Icon(
-                          Icons.calendar_month_outlined,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {},
                       ),
                     ],
                   )),
-              const Center(
-                child: TicketWidget(
-                  width: 250,
-                  height: 460,
-                  isCornerRounded: true,
-                  child: TicketData(),
+              const Padding(
+                padding: EdgeInsets.only(top: 70),
+                child: Center(
+                  child: TicketWidget(
+                    width: 250,
+                    height: 400,
+                    isCornerRounded: true,
+                    child: TicketData(),
+                  ),
                 ),
               ),
             ],
