@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:booking_movie_ticket/app/widgets/dateTime_Border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,16 +12,18 @@ class TimeButton extends StatefulWidget {
 }
 
 class _TimeButtonState extends State<TimeButton> {
-  // ScrollController scrollController = ScrollController();
-  // var _currPageValue = 0.0;
-  // void initState() {
-  //   super.initState();
-  //   scrollController.addListener(() {
-  //     setState(() {
-
-  //     });
-  //   })
-  // }
+  static const List<Map<String, String>> _fakeData = [
+    {"index": "1", "time": "13:00"},
+    {"index": "2", "time": "14:00"},
+    {"index": "3", "time": "15:00"},
+    {"index": "4", "time": "16:00"},
+    {"index": "5", "time": "17:00"},
+    {"index": "6", "time": "18:00"},
+    {"index": "7", "time": "19:00"},
+    {"index": "8", "time": "20:00"},
+    {"index": "9", "time": "21:00"},
+    {"index": "10", "time": "22:00"},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +43,21 @@ class _TimeButtonState extends State<TimeButton> {
 
   Widget _buildPageItem(int index) {
     return UnicornOutlineButton(
-        strokeWidth: 1,
-        radius: 10.sp,
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromRGBO(9, 251, 211, 1),
-            Color.fromRGBO(9, 251, 211, 0)
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.centerRight,
-        ),
-        onPressed: () {},
-        child: Center(
-          child: Text("18:00", style: AppTextStyle.st15400),
-        ));
+      strokeWidth: 1,
+      radius: 10.sp,
+      gradient: const LinearGradient(
+        colors: [
+          Color.fromRGBO(9, 251, 211, 1),
+          Color.fromRGBO(9, 251, 211, 0)
+        ],
+        begin: Alignment.topLeft,
+        end: Alignment.centerRight,
+      ),
+      onPressed: () {},
+      child: Center(
+        child: Text(_fakeData[index]['time'].toString(),
+            style: AppTextStyle.st15700),
+      ),
+    );
   }
 }

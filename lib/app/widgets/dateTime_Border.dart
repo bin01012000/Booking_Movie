@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UnicornOutlineButton extends StatelessWidget {
   final _GradientPainter _painter;
@@ -6,17 +7,17 @@ class UnicornOutlineButton extends StatelessWidget {
   final VoidCallback _callback;
   final double _radius;
 
-  UnicornOutlineButton({
+  UnicornOutlineButton({Key? key,
     required double strokeWidth,
     required double radius,
     required Gradient gradient,
     required Widget child,
     required VoidCallback onPressed,
-  })  : this._painter = _GradientPainter(
+  })  : _painter = _GradientPainter(
             strokeWidth: strokeWidth, radius: radius, gradient: gradient),
-        this._child = child,
-        this._callback = onPressed,
-        this._radius = radius;
+        _child = child,
+        _callback = onPressed,
+        _radius = radius, super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +30,9 @@ class UnicornOutlineButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(_radius),
           onTap: _callback,
           child: Container(
-            width: 50,
-            height: 80,
-            margin: EdgeInsets.only(left: 2, right: 2, top: 2),
+            width: 50.sp,
+            height: 80.sp,
+            margin: EdgeInsets.only(left: 2.sp, right: 2.sp, top: 2.sp),
             decoration: BoxDecoration(
                 gradient: const LinearGradient(
                   colors: [
@@ -41,7 +42,7 @@ class UnicornOutlineButton extends StatelessWidget {
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                 ),
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(10.sp)),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -66,9 +67,9 @@ class _GradientPainter extends CustomPainter {
       {required double strokeWidth,
       required double radius,
       required Gradient gradient})
-      : this.strokeWidth = strokeWidth,
-        this.radius = radius,
-        this.gradient = gradient;
+      : strokeWidth = strokeWidth,
+        radius = radius,
+        gradient = gradient;
 
   @override
   void paint(Canvas canvas, Size size) {

@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
         gradient: linearGradient(170, ['#2e1371 2.71%', '#130b2b 97.75%']),
       ),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
         extendBody: true,
         appBar: AppBar(
@@ -24,7 +25,7 @@ class HomeScreen extends StatelessWidget {
             style: AppTextStyle.st20700,
           ),
         ),
-        backgroundColor: Color.fromRGBO(0, 0, 0, 0),
+        backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
         body: const BodyHome(),
         //   bottomNavigationBar: RollingBottomBar(
         //   controller: _controller,

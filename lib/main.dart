@@ -1,4 +1,4 @@
-import 'package:booking_movie_ticket/app/presentation/views/home/detail_screen.dart';
+import 'package:booking_movie_ticket/app/presentation/views/detail/detail_screen.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(primaryColor: Colors.transparent),
           initialRoute: '/',
           routes: {
-            '/': (context) => DetailScreen(),
+            '/': (context) => const HomeScreen(),
+            '/detail': (context) => const DetailScreen(),
           },
         );
       },
