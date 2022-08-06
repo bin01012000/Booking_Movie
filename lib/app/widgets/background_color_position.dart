@@ -13,7 +13,7 @@ class BackgroundColorPosition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints.expand(),
+      constraints: BoxConstraints.expand(width: 250.sp, height: 250.sp),
       width: 250.sp,
       height: 250.sp,
       decoration: BoxDecoration(

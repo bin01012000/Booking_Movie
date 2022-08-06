@@ -1,13 +1,16 @@
+// ignore_for_file: prefer_initializing_formals
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class UnicornOutlineButton extends StatelessWidget {
+class ButtonBuy extends StatelessWidget {
   final _GradientPainter _painter;
   final Widget _child;
   final VoidCallback _callback;
   final double _radius;
 
-  UnicornOutlineButton({Key? key,
+  ButtonBuy({
+    Key? key,
     required double strokeWidth,
     required double radius,
     required Gradient gradient,
@@ -17,7 +20,8 @@ class UnicornOutlineButton extends StatelessWidget {
             strokeWidth: strokeWidth, radius: radius, gradient: gradient),
         _child = child,
         _callback = onPressed,
-        _radius = radius, super(key: key);
+        _radius = radius,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +34,10 @@ class UnicornOutlineButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(_radius),
           onTap: _callback,
           child: Container(
-            width: 50.sp,
-            height: 80.sp,
-            margin: EdgeInsets.only(left: 2.sp, right: 2.sp, top: 2.sp),
             decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [
-                    Color.fromRGBO(46, 19, 113, 1),
-                    Color.fromRGBO(33, 35, 47, 1),
-                  ],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                ),
-                borderRadius: BorderRadius.circular(10.sp)),
+                color: const Color.fromRGBO(255, 255, 255, 0.3),
+                borderRadius: BorderRadius.circular(40)),
+            constraints: BoxConstraints(minWidth: 70.sp, minHeight: 71.sp),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,

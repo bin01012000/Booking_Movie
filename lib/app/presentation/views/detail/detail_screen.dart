@@ -11,16 +11,7 @@ class DetailScreen extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: linearGradient(170, ['#2e1371 2.71%', '#130b2b 97.75%']),
       ),
-      child: Scaffold(
-          extendBodyBehindAppBar: true,
-          extendBody: true,
-          appBar: AppBar(
-            elevation: 0,
-            centerTitle: true,
-            backgroundColor: Colors.transparent,
-          ),
-          backgroundColor: const Color.fromARGB(255, 23, 12, 53),
-          body: const BodyDetail(),),
+      child: const BodyDetail(),
     );
   }
 }

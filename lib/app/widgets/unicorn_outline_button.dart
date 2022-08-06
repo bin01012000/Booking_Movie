@@ -1,44 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class UnicornOutlineButton extends StatelessWidget {
+class UnicornOutlineButton extends StatefulWidget {
   final _GradientPainter _painter;
   final Widget _child;
   final VoidCallback _callback;
   final double _radius;
+  final List<Color> _background;
+  final double _width;
+  final double _height;
+  final bool _isDateTimeButton;
 
-  UnicornOutlineButton({Key? key,
-    required double strokeWidth,
-    required double radius,
-    required Gradient gradient,
-    required Widget child,
-    required VoidCallback onPressed,
-  })  : _painter = _GradientPainter(
+  UnicornOutlineButton(
+      {Key? key,
+      required double strokeWidth,
+      required double radius,
+      required Gradient gradient,
+      required Widget child,
+      required VoidCallback onPressed,
+      required List<Color> background,
+      required double width,
+      required double height,
+      required bool isDateTimeButton})
+      : _painter = _GradientPainter(
             strokeWidth: strokeWidth, radius: radius, gradient: gradient),
         _child = child,
         _callback = onPressed,
-        _radius = radius, super(key: key);
+        _radius = radius,
+        _background = background,
+        _width = width,
+        _height = height,
+        _isDateTimeButton = isDateTimeButton,
+        super(key: key);
 
+  @override
+  State<UnicornOutlineButton> createState() => _UnicornOutlineButtonState();
+}
+
+class _UnicornOutlineButtonState extends State<UnicornOutlineButton> {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _painter,
+      painter: widget._painter,
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
-        onTap: _callback,
+        onTap: widget._callback,
         child: InkWell(
-          borderRadius: BorderRadius.circular(_radius),
-          onTap: _callback,
+          borderRadius: BorderRadius.circular(widget._radius),
+          onTap: widget._callback,
           child: Container(
+            width: widget._width,
+            height: widget._height,
+            margin: EdgeInsets.only(left: 1.sp, right: 1.sp, top: 1.sp),
             decoration: BoxDecoration(
-                color: const Color.fromRGBO(255, 255, 255, 0.3),
-                borderRadius: BorderRadius.circular(40)),
+                gradient: widget._background.isNotEmpty
+                    ? LinearGradient(
+                        colors: widget._background,
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      )
+                    : null,
+                color: widget._isDateTimeButton == false
+                    ? const Color.fromRGBO(255, 255, 255, 0.3)
+                    : null,
+                borderRadius: BorderRadius.circular(widget._radius)),
             constraints: BoxConstraints(minWidth: 40.sp, minHeight: 40.sp),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                _child,
+                widget._child,
               ],
             ),
           ),
@@ -55,12 +86,9 @@ class _GradientPainter extends CustomPainter {
   final Gradient gradient;
 
   _GradientPainter(
-      {required double strokeWidth,
-      required double radius,
-      required Gradient gradient})
-      : strokeWidth = strokeWidth,
-        radius = radius,
-        gradient = gradient;
+      {required this.radius,
+      required this.strokeWidth,
+      required this.gradient});
 
   @override
   void paint(Canvas canvas, Size size) {

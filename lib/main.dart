@@ -1,5 +1,6 @@
-import 'package:booking_movie_ticket/app/presentation/views/detail/detail_screen.dart';
-import 'package:booking_movie_ticket/app/presentation/views/home/home_screen.dart';
+// ignore_for_file: constant_identifier_names
+
+import 'package:booking_movie_ticket/app/route/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,11 +27,8 @@ class MyApp extends StatelessWidget {
           title: 'Booking Movie Ticket',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(primaryColor: Colors.transparent),
-          initialRoute: '/',
-          routes: {
-            '/': (context) => const HomeScreen(),
-            '/detail': (context) => const DetailScreen(),
-          },
+          initialRoute: AppPages.initial,
+          routes: AppPages.routes,
         );
       },
     );

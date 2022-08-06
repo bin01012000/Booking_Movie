@@ -1,4 +1,4 @@
-import 'package:booking_movie_ticket/app/widgets/dateTime_Border.dart';
+import 'package:booking_movie_ticket/app/widgets/unicorn_outline_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,6 +24,11 @@ class _TimeButtonState extends State<TimeButton> {
     {"index": "9", "time": "21:00"},
     {"index": "10", "time": "22:00"},
   ];
+  int _selectedIndex = 0;
+
+  _onSelected(int index) {
+    setState(() => _selectedIndex = index);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,7 @@ class _TimeButtonState extends State<TimeButton> {
         child: ListView.separated(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: 10,
+            itemCount: _fakeData.length,
             separatorBuilder: (context, _) => SizedBox(
                   width: 20.sp,
                 ),
@@ -43,17 +48,34 @@ class _TimeButtonState extends State<TimeButton> {
 
   Widget _buildPageItem(int index) {
     return UnicornOutlineButton(
+      background: _selectedIndex == index
+          ? [
+              const Color.fromRGBO(182, 17, 107, 1),
+              const Color.fromRGBO(33, 35, 47, 1),
+            ]
+          : [
+              const Color.fromRGBO(46, 19, 113, 1),
+              const Color.fromRGBO(33, 35, 47, 1),
+            ],
       strokeWidth: 1,
       radius: 10.sp,
-      gradient: const LinearGradient(
-        colors: [
-          Color.fromRGBO(9, 251, 211, 1),
-          Color.fromRGBO(9, 251, 211, 0)
-        ],
+      gradient: LinearGradient(
+        colors: _selectedIndex == index
+            ? [
+                const Color.fromRGBO(254, 83, 187, 1),
+                const Color.fromRGBO(9, 251, 211, 0)
+              ]
+            : [
+                const Color.fromRGBO(9, 251, 211, 1),
+                const Color.fromRGBO(9, 251, 211, 0)
+              ],
         begin: Alignment.topLeft,
         end: Alignment.centerRight,
       ),
-      onPressed: () {},
+      onPressed: () => _onSelected(index),
+      height: 40.sp,
+      isDateTimeButton: true,
+      width: 50.sp,
       child: Center(
         child: Text(_fakeData[index]['time'].toString(),
             style: AppTextStyle.st15700),
