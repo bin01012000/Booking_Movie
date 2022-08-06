@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_initializing_formals
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -62,9 +60,9 @@ class _GradientPainter extends CustomPainter {
       {required double strokeWidth,
       required double radius,
       required Gradient gradient})
-      : strokeWidth = strokeWidth,
-        radius = radius,
-        gradient = gradient;
+      : this.strokeWidth = strokeWidth,
+        this.radius = radius,
+        this.gradient = gradient;
 
   @override
   void paint(Canvas canvas, Size size) {

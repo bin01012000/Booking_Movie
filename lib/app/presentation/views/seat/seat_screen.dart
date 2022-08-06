@@ -53,7 +53,7 @@ class SeatScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  background: [],
+                  background: const [],
                   height: 44.sp,
                   isDateTimeButton: false,
                   width: 44.sp,
@@ -83,7 +83,7 @@ class SeatScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                     onPressed: () {},
-                    background: [],
+                    background: const [],
                     height: 44.sp,
                     isDateTimeButton: false,
                     width: 44.sp,

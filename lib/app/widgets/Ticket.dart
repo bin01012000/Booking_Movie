@@ -34,11 +34,11 @@ class TicketData extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Date: April 23'),
+                Text('Date: April 23'),
                 SizedBox(
                   width: 30.sp,
                 ),
-                const Text('Time: 6 p.m.')
+                Text('Time: 6 p.m.')
               ],
             ),
             SizedBox(
@@ -47,11 +47,11 @@ class TicketData extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Row: 2'),
+                Text('Row: 2'),
                 SizedBox(
                   width: 75.sp,
                 ),
-                const Text('Seats: 9 , 10')
+                Text('Seats: 9 , 10')
               ],
             )
           ],
