@@ -34,15 +34,16 @@ class _TimeButtonState extends State<TimeButton> {
   Widget build(BuildContext context) {
     return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
       Expanded(
-        child: ListView.separated(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: _fakeData.length,
-            separatorBuilder: (context, _) => SizedBox(
-                  width: 20.sp,
-                ),
-            itemBuilder: (context, index) => _buildPageItem(index)),
-      ),
+        child: SingleChildScrollView(
+          child: Wrap(
+            spacing: 20.sp,
+            children: _fakeData
+                .map(
+                    (e) => _buildPageItem(int.parse(e['index'].toString()) - 1))
+                .toList(),
+          ),
+        ),
+      )
     ]);
   }
 

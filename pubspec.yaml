@@ -46,7 +46,8 @@ dependencies:
   rolling_bottom_bar: ^0.2.2
   item_selector: ^0.2.0
   ticket_widget: ^0.0.1
-
+  readmore: ^2.1.0
+  dots_indicator: ^2.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

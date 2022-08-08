@@ -7,11 +7,11 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: linearGradient(170, ['#2e1371 2.71%', '#130b2b 97.75%']),
-      ),
-      child: const BodyDetail(),
+    return const Scaffold(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+      backgroundColor: Color.fromARGB(255, 23, 12, 53),
+      body: BodyDetail(),
     );
   }
 }

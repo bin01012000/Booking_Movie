@@ -2,7 +2,7 @@ import 'package:booking_movie_ticket/app/presentation/views/seat/widgets/dot_sta
 import 'package:flutter/material.dart';
 import 'package:booking_movie_ticket/app/common/utils/value/app_color.dart';
 import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
-import 'package:booking_movie_ticket/app/presentation/views/home/mobile_ticket_screen.dart';
+import 'package:booking_movie_ticket/app/presentation/views/ticket/mobile_ticket_screen.dart';
 import 'package:booking_movie_ticket/app/widgets/arc_paint.dart';
 import 'package:booking_movie_ticket/app/widgets/button_buy.dart';
 import 'package:booking_movie_ticket/app/presentation/views/seat/widgets/list_seats.dart';
@@ -129,7 +129,10 @@ class SeatScreen extends StatelessWidget {
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
-                    Image.asset("assets/images/Base.png"),
+                    Image.asset(
+                      "assets/images/Base.png",
+                      fit: BoxFit.contain,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -138,21 +141,14 @@ class SeatScreen extends StatelessWidget {
                             Padding(
                                 padding: EdgeInsets.only(
                                     left: 10.sp, bottom: 60.sp)),
-                            const Icon(
-                              Icons.calendar_month_outlined,
-                              color: Colors.white,
-                            ),
+                            Image.asset('assets/icons/Calendar.png'),
                             SizedBox(width: 10.sp),
                             Text(
                               "April 23, 2022",
                               style: AppTextStyle.st15400,
                             ),
                             SizedBox(width: 10.sp),
-                            Icon(
-                              Icons.brightness_1,
-                              color: Colors.white,
-                              size: 10.sp,
-                            ),
+                            Image.asset('assets/icons/Ticket.png'),
                             SizedBox(width: 10.sp),
                             Text(
                               "6 p.m.",
