@@ -29,10 +29,9 @@ class DataModel {
 class _ListTicketState extends State<ListTicket> {
   late PageController _pageController;
   int _currentPage = 0;
-
+  double positionPage = 1;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _pageController =
         PageController(initialPage: _currentPage, viewportFraction: 0.8);
@@ -40,7 +39,6 @@ class _ListTicketState extends State<ListTicket> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _pageController.dispose();
   }
@@ -70,9 +68,9 @@ class _ListTicketState extends State<ListTicket> {
   Widget dotIndication() {
     return DotsIndicator(
       dotsCount: dataList.length,
-      position: 1,
+      position: positionPage,
       decorator: DotsDecorator(
-        activeColor: Color.fromRGBO(124, 98, 214, 1),
+        activeColor: const Color.fromRGBO(124, 98, 214, 1),
         size: const Size.square(9.0),
         activeSize: const Size(9.0, 9.0),
         activeShape:
@@ -171,7 +169,7 @@ class _ListTicketState extends State<ListTicket> {
                             image: DecorationImage(
                                 image:
                                     AssetImage('assets/images/Code barre.png'),
-                                fit: BoxFit.cover)),
+                                fit: BoxFit.contain)),
                       ),
                     ),
                   ],
