@@ -52,33 +52,33 @@ class ButtonBuy extends StatelessWidget {
 
 class _GradientPainter extends CustomPainter {
   final Paint _paint = Paint();
-  final double radius;
-  final double strokeWidth;
-  final Gradient gradient;
+  final double _radius;
+  final double _strokeWidth;
+  final Gradient _gradient;
 
   _GradientPainter(
       {required double strokeWidth,
       required double radius,
       required Gradient gradient})
-      : this.strokeWidth = strokeWidth,
-        this.radius = radius,
-        this.gradient = gradient;
+      : _strokeWidth = strokeWidth,
+        _radius = radius,
+        _gradient = gradient;
 
   @override
   void paint(Canvas canvas, Size size) {
     // create outer rectangle equals size
     Rect outerRect = Offset.zero & size;
     var outerRRect =
-        RRect.fromRectAndRadius(outerRect, Radius.circular(radius));
+        RRect.fromRectAndRadius(outerRect, Radius.circular(_radius));
 
     // create inner rectangle smaller by strokeWidth
-    Rect innerRect = Rect.fromLTWH(strokeWidth, strokeWidth,
-        size.width - strokeWidth * 2, size.height - strokeWidth * 2);
+    Rect innerRect = Rect.fromLTWH(_strokeWidth, _strokeWidth,
+        size.width - _strokeWidth * 2, size.height - _strokeWidth * 2);
     var innerRRect = RRect.fromRectAndRadius(
-        innerRect, Radius.circular(radius - strokeWidth));
+        innerRect, Radius.circular(_radius - _strokeWidth));
 
     // apply gradient shader
-    _paint.shader = gradient.createShader(outerRect);
+    _paint.shader = _gradient.createShader(outerRect);
 
     // create difference between outer and inner paths and draw it
     Path path1 = Path()..addRRect(outerRRect);

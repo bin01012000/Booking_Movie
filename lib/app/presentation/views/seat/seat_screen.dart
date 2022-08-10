@@ -129,7 +129,11 @@ class SeatScreen extends StatelessWidget {
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
-                    Image.asset("assets/images/Base.png"),
+                    Image.asset(
+                      "assets/images/Base.png",
+                      width: 1.sw,
+                      fit: BoxFit.contain,
+                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

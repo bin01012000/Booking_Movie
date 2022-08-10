@@ -38,16 +38,16 @@ class BodyHome extends StatelessWidget {
       children: [
         Positioned(
           right: 250.sp,
-          top: -250.sp,
+          top: -50.sp,
           bottom: 0,
-          left: -250.sp,
+          left: -100.sp,
           child: const BackgroundColorPosition(bgColor: Color(0xff60ffca)),
         ),
         Positioned(
-          right: -320.sp,
+          right: -100.sp,
           top: 0,
           bottom: -320.sp,
-          left: 320.sp,
+          left: 360.sp,
           child: const BackgroundColorPosition(bgColor: Color(0xffff53c0)),
         ),
         SafeArea(
@@ -93,16 +93,20 @@ class OneContentHome extends StatelessWidget {
             style: AppTextStyle.st17700,
           ),
           SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
             child: Wrap(
               spacing: 20.sp,
               direction: Axis.horizontal,
               children: fakeData
                   .map((e) => GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: () => Navigator.pushNamed(context, '/detail'),
-                        child: Image.asset(e["img"].toString()),
-                      ))
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () => Navigator.pushNamed(context, '/detail'),
+                      // child: FadeInImage.memoryNetwork(
+                      //   image: e["img"].toString(),
+                      //   placeholder: kTransparentImage,
+                      // ),
+                      child: Image.asset(e["img"].toString())))
                   .toList(),
             ),
           ),
@@ -122,9 +126,13 @@ class SearchInput extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.sp),
       child: TextField(
+        keyboardAppearance: Brightness.dark,
+        style: AppTextStyle.placeholder.copyWith(color: Colors.white),
         decoration: InputDecoration(
+          isDense: true,
           filled: true,
           fillColor: const Color.fromRGBO(118, 118, 128, 0.12),
+          border: InputBorder.none,
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.transparent),
             borderRadius: BorderRadius.circular(10.sp),

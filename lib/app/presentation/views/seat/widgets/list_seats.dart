@@ -1,6 +1,4 @@
-import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListItem {
   String isSelected;

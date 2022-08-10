@@ -42,10 +42,10 @@ extension TimeOfDayExt on String {
 }
 
 extension DebugLog on String {
-  void debugLog() {
+  void debugLog(String title) {
     return debugPrint(
       '\n******************************* DebugLog *******************************\n'
-      ' $this'
+      ' $title: $this'
       '\n******************************* DebugLog *******************************\n',
       wrapWidth: 1024,
     );
