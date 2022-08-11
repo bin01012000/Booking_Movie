@@ -133,8 +133,8 @@ class SeatScreen extends StatelessWidget {
                       "assets/images/Base.png",
                       fit: BoxFit.contain,
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    Wrap(
+                      spacing: 10.sp,
                       children: [
                         Row(
                           children: [
@@ -148,7 +148,11 @@ class SeatScreen extends StatelessWidget {
                               style: AppTextStyle.st15400,
                             ),
                             SizedBox(width: 10.sp),
-                            Image.asset('assets/icons/Ticket.png'),
+                            Icon(
+                              Icons.brightness_1,
+                              color: Colors.white,
+                              size: 10.sp,
+                            ),
                             SizedBox(width: 10.sp),
                             Text(
                               "6 p.m.",
@@ -159,10 +163,7 @@ class SeatScreen extends StatelessWidget {
                         Row(
                           children: [
                             Padding(padding: EdgeInsets.only(left: 10.sp)),
-                            const Icon(
-                              Icons.airplane_ticket,
-                              color: Colors.white,
-                            ),
+                            Image.asset('assets/icons/Ticket.png'),
                             SizedBox(width: 10.sp),
                             Text(
                               "VIP Section",

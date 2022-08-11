@@ -17,6 +17,7 @@ List<DataModel> dataList = [
   DataModel("assets/images/Image1.png"),
   DataModel("assets/images/Image2.png"),
 ];
+int selectedindex = 0;
 
 class DataModel {
   final String imageName;
@@ -30,6 +31,7 @@ class _ListTicketState extends State<ListTicket> {
   late PageController _pageController;
   int _currentPage = 0;
   double positionPage = 1;
+  int _activePage = 0;
   @override
   void initState() {
     super.initState();
@@ -55,26 +57,83 @@ class _ListTicketState extends State<ListTicket> {
                   itemCount: dataList.length,
                   physics: const ClampingScrollPhysics(),
                   controller: _pageController,
+                  onPageChanged: (int index) {
+                    setState(() {
+                      _activePage = index;
+                    });
+                  },
                   itemBuilder: (context, index) {
                     return carouselView(index);
                   }),
             ),
-            SizedBox(height: 20.sp),
-            dotIndication(),
+            SizedBox(
+              height: 10.sp,
+            ),
+            Container(
+              color: Colors.black12,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List<Widget>.generate(
+                    dataList.length,
+                    (index) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: InkWell(
+                            onTap: () {
+                              _pageController.animateToPage(index,
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeIn);
+                            },
+                            child: CircleAvatar(
+                              radius: 5,
+                              // check if a dot is connected to the current page
+                              // if true, give it a different color
+                              backgroundColor: _activePage == index
+                                  ? const Color.fromRGBO(124, 98, 214, 1)
+                                  : const Color.fromRGBO(255, 255, 255, 0.2),
+                            ),
+                          ),
+                        )),
+              ),
+            ),
           ],
         ));
   }
 
-  Widget dotIndication() {
-    return DotsIndicator(
-      dotsCount: dataList.length,
-      position: positionPage,
-      decorator: DotsDecorator(
-        activeColor: const Color.fromRGBO(124, 98, 214, 1),
-        size: const Size.square(9.0),
-        activeSize: const Size(9.0, 9.0),
-        activeShape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+  List<Widget> _buildPageIndicator() {
+    List<Widget> list = [];
+    for (int i = 0; i < dataList.length; i++) {
+      list.add(i == selectedindex ? _indicator(true) : _indicator(false));
+    }
+    return list;
+  }
+
+  Widget _indicator(bool isActive) {
+    return Container(
+      height: 10,
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 150),
+        margin: EdgeInsets.symmetric(horizontal: 4.0),
+        height: isActive ? 10 : 8.0,
+        width: isActive ? 12 : 8.0,
+        decoration: BoxDecoration(
+          boxShadow: [
+            isActive
+                ? BoxShadow(
+                    color: Color(0XFF2FB7B2).withOpacity(0.72),
+                    blurRadius: 4.0,
+                    spreadRadius: 1.0,
+                    offset: Offset(
+                      0.0,
+                      0.0,
+                    ),
+                  )
+                : BoxShadow(
+                    color: Colors.transparent,
+                  )
+          ],
+          shape: BoxShape.circle,
+          color: isActive ? Color(0XFF6BC4C9) : Color(0XFFEAEAEA),
+        ),
       ),
     );
   }

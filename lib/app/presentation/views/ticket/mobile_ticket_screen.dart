@@ -29,50 +29,18 @@ class MobileTicket extends StatelessWidget {
         gradient: linearGradient(170, ['#2e1371 2.71%', '#130b2b 97.75%']),
       ),
       child: Scaffold(
-        backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(44.sp + 12.sp),
-          child: Padding(
-            padding: EdgeInsets.only(top: 12.sp),
-            child: AppBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              leadingWidth: 44.sp,
-              automaticallyImplyLeading: false,
-              leading: Transform.translate(
-                offset: Offset(20.sp, 0),
-                child: UnicornOutlineButton(
-                  strokeWidth: 1,
-                  radius: 40.sp,
-                  gradient: const LinearGradient(
-                    colors: [
-                      Color.fromRGBO(96, 255, 202, 1),
-                      Color.fromRGBO(96, 255, 202, 0)
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                  ),
-                  child: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  background: const [],
-                  height: 44.sp,
-                  isDateTimeButton: false,
-                  width: 44.sp,
-                ),
-              ),
-              title: Text(
-                "Mobile Ticket",
-                style: AppTextStyle.st20700,
-              ),
-              centerTitle: true,
-              actions: [
-                Transform.translate(
-                  offset: Offset(-20.sp, 0),
+          backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(44.sp + 12.sp),
+            child: Padding(
+              padding: EdgeInsets.only(top: 12.sp),
+              child: AppBar(
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+                leadingWidth: 44.sp,
+                automaticallyImplyLeading: false,
+                leading: Transform.translate(
+                  offset: Offset(20.sp, 0),
                   child: UnicornOutlineButton(
                     strokeWidth: 1,
                     radius: 40.sp,
@@ -85,34 +53,68 @@ class MobileTicket extends StatelessWidget {
                       end: Alignment.bottomCenter,
                     ),
                     child: const Icon(
-                      Icons.more_vert,
+                      Icons.arrow_back,
                       color: Colors.white,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     background: const [],
                     height: 44.sp,
                     isDateTimeButton: false,
                     width: 44.sp,
                   ),
                 ),
-              ],
+                title: Text(
+                  "Mobile Ticket",
+                  style: AppTextStyle.st20700,
+                ),
+                centerTitle: true,
+                actions: [
+                  Transform.translate(
+                    offset: Offset(-20.sp, 0),
+                    child: UnicornOutlineButton(
+                      strokeWidth: 1,
+                      radius: 40.sp,
+                      gradient: const LinearGradient(
+                        colors: [
+                          Color.fromRGBO(96, 255, 202, 1),
+                          Color.fromRGBO(96, 255, 202, 0)
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                      child: const Icon(
+                        Icons.more_vert,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {},
+                      background: const [],
+                      height: 44.sp,
+                      isDateTimeButton: false,
+                      width: 44.sp,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 30.sp),
-              Text(
-                'Once you buy a movie ticket simply scan the barcode to acces to your movie.',
-                style: AppTextStyle.st17500,
-                textAlign: TextAlign.center,
+          body: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Center(
+              child: Column(
+                children: [
+                  SizedBox(height: 30.sp),
+                  Text(
+                    'Once you buy a movie ticket simply scan the barcode to acces to your movie.',
+                    style: AppTextStyle.st17500,
+                    textAlign: TextAlign.center,
+                  ),
+                  ListTicket(),
+                ],
               ),
-              ListTicket(),
-            ],
-          ),
-        ),
-      ),
+            ),
+          )),
     );
   }
 }
