@@ -64,13 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  dots_indicator:
-    dependency: "direct main"
-    description:
-      name: dots_indicator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -401,13 +394,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
-  readmore:
-    dependency: "direct main"
-    description:
-      name: readmore
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.2.0"
   rolling_bottom_bar:
     dependency: "direct main"
     description:
@@ -518,13 +504,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
-  ticket_widget:
-    dependency: "direct main"
-    description:
-      name: ticket_widget
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.1"
   tuple:
     dependency: transitive
     description:

@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 class ListItem {
   String isSelected;
-  IconData icon;
+
   ListItem({
     required this.isSelected,
-    required this.icon,
   });
 }
 
@@ -18,50 +17,49 @@ class MyGridView extends StatefulWidget {
 
 class _MyGridViewState extends State<MyGridView> {
   final List<ListItem> _items = [
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
-    ListItem(isSelected: "RESERVED", icon: Icons.chair),
-    ListItem(isSelected: "AVAILABLE", icon: Icons.chair),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "AVAILABLE"),
+    ListItem(isSelected: "RESERVED"),
+    ListItem(isSelected: "AVAILABLE"),
   ];
   // set an int with value -1 since no card has been selected
   int selectedCard = -1;
-  final IconData chair = const IconData(0xe14d, fontFamily: 'MaterialIcons');
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -88,26 +86,23 @@ class _MyGridViewState extends State<MyGridView> {
             child: Container(
               color: Colors.transparent,
               child: Center(
-                child: Icon(
-                  _items[index].icon,
-                  color: _getColor(_items[index].isSelected),
-                ),
+                child: _getImage(_items[index].isSelected),
               ),
             ),
           );
         });
   }
 
-  Color _getColor(String status) {
+  _getImage(String status) {
     switch (status) {
       case "AVAILABLE":
-        return Colors.white;
+        return Image.asset("assets/icons/SeatAvailable.png");
       case "RESERVED":
-        return const Color.fromRGBO(182, 17, 107, 1);
+        return Image.asset("assets/icons/SeatReserved.png");
       case "SELECTED":
-        return const Color.fromRGBO(9, 251, 211, 1);
+        return Image.asset("assets/icons/SeatSelected.png");
       default:
-        return Colors.white;
+        return Image.asset("assets/icons/SeatAvailable.png");
     }
   }
 }

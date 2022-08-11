@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:booking_movie_ticket/app/widgets/unicorn_outline_button.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -85,8 +84,6 @@ class _ListTicketState extends State<ListTicket> {
                             },
                             child: CircleAvatar(
                               radius: 5,
-                              // check if a dot is connected to the current page
-                              // if true, give it a different color
                               backgroundColor: _activePage == index
                                   ? const Color.fromRGBO(124, 98, 214, 1)
                                   : const Color.fromRGBO(255, 255, 255, 0.2),

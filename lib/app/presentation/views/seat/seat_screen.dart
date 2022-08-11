@@ -127,78 +127,76 @@ class SeatScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 34.sp),
                 child: Stack(
-                  alignment: Alignment.bottomCenter,
+                  alignment: Alignment.centerLeft,
                   children: [
                     Image.asset(
                       "assets/images/Base.png",
                       fit: BoxFit.contain,
                     ),
-                    Wrap(
-                      spacing: 10.sp,
-                      children: [
-                        Row(
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10.sp, bottom: 60.sp)),
-                            Image.asset('assets/icons/Calendar.png'),
-                            SizedBox(width: 10.sp),
-                            Text(
-                              "April 23, 2022",
-                              style: AppTextStyle.st15400,
-                            ),
-                            SizedBox(width: 10.sp),
-                            Icon(
-                              Icons.brightness_1,
-                              color: Colors.white,
-                              size: 10.sp,
-                            ),
-                            SizedBox(width: 10.sp),
-                            Text(
-                              "6 p.m.",
-                              style: AppTextStyle.st15400,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Padding(padding: EdgeInsets.only(left: 10.sp)),
-                            Image.asset('assets/icons/Ticket.png'),
-                            SizedBox(width: 10.sp),
-                            Text(
-                              "VIP Section",
-                              style: AppTextStyle.st15400,
-                            ),
-                            SizedBox(width: 10.sp),
-                            Icon(
-                              Icons.brightness_1,
-                              color: Colors.white,
-                              size: 10.sp,
-                            ),
-                            SizedBox(width: 10.sp),
-                            Text(
-                              "Seat 9,10",
-                              style: AppTextStyle.st15400,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10.sp, bottom: 110.sp)),
-                            const Icon(
-                              Icons.shopping_cart_rounded,
-                              color: Colors.white,
-                            ),
-                            SizedBox(width: 10.sp),
-                            Text(
-                              "Total: 30",
-                              style: AppTextStyle.st15400,
-                            ),
-                          ],
-                        ),
-                      ],
+                    Container(
+                      padding: EdgeInsets.only(left: 15.sp),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Wrap(
+                            spacing: 15.sp,
+                            children: [
+                              Image.asset('assets/icons/Calendar.png'),
+                              Text(
+                                "April 23, 2022",
+                                style: AppTextStyle.st15400,
+                              ),
+                              Icon(
+                                Icons.brightness_1,
+                                color: Colors.white,
+                                size: 10.sp,
+                              ),
+                              Text(
+                                "6 p.m.",
+                                style: AppTextStyle.st15400,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.sp,
+                          ),
+                          Wrap(
+                            spacing: 15.sp,
+                            children: [
+                              Image.asset('assets/icons/Ticket.png'),
+                              Text(
+                                "VIP Section",
+                                style: AppTextStyle.st15400,
+                              ),
+                              Icon(
+                                Icons.brightness_1,
+                                color: Colors.white,
+                                size: 10.sp,
+                              ),
+                              Text(
+                                "Seat 9,10",
+                                style: AppTextStyle.st15400,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.sp,
+                          ),
+                          Wrap(
+                            spacing: 15.sp,
+                            children: [
+                              const Icon(
+                                Icons.shopping_cart_rounded,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                "Total: 30",
+                                style: AppTextStyle.st15400,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                     Positioned(
                         right: 15.sp,
