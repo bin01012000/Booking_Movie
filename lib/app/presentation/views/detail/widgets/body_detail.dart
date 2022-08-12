@@ -100,57 +100,47 @@ class BodyDetail extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Center(
-              child: Text(_fakeData[0]['title'].toString(),
-                  style: AppTextStyle.st20700),
-            ),
-            Center(
-              child: Text(_fakeData[0]['title2'].toString(),
-                  style: AppTextStyle.st14700),
-            ),
-            SizedBox(
-              height: 30.sp,
-            ),
-            Center(
-              child: DescriptionTextWidget(
-                  text: _fakeData[0]['content'].toString()),
-            ),
-            SizedBox(
-              height: 30.sp,
-            ),
-            Center(
-              child: Text(
-                "Select date and time",
-                style: AppTextStyle.st17500,
-              ),
-            ),
-            SizedBox(
-              height: 30.sp,
-            ),
-            SizedBox(height: 90.sp, width: 350.sp, child: const DateTimeBody()),
-            SizedBox(
-              height: 30.sp,
-            ),
-            SizedBox(height: 40.sp, width: 350.sp, child: const TimeButton()),
-            SizedBox(
-              height: 20.sp,
-            ),
-            RaisedGradientButton(
-              child: Text('Reservation', style: AppTextStyle.st17500),
-              gradient: const LinearGradient(
-                colors: <Color>[
-                  Color.fromRGBO(182, 17, 107, 1),
-                  Color.fromRGBO(59, 21, 120, 1),
-                ],
-              ),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const SeatScreen()));
-              },
-            ),
-            SizedBox(
-              height: 20.sp,
-            ),
+            Wrap(
+              direction: Axis.horizontal,
+              alignment: WrapAlignment.center,
+              runSpacing: 10.sp,
+              children: [
+                Center(
+                  child: Text(_fakeData[0]['title'].toString(),
+                      style: AppTextStyle.st20700),
+                ),
+                Center(
+                  child: Text(_fakeData[0]['title2'].toString(),
+                      style: AppTextStyle.st14700),
+                ),
+                Center(
+                    child: DescriptionTextWidget(
+                        text: _fakeData[0]['content'].toString())),
+                Center(
+                  child: Text(
+                    "Select date and time",
+                    style: AppTextStyle.st17500,
+                  ),
+                ),
+                SizedBox(
+                    height: 90.sp, width: 350.sp, child: const DateTimeBody()),
+                SizedBox(
+                    height: 40.sp, width: 350.sp, child: const TimeButton()),
+                RaisedGradientButton(
+                  child: Text('Reservation', style: AppTextStyle.st17500),
+                  gradient: const LinearGradient(
+                    colors: <Color>[
+                      Color.fromRGBO(182, 17, 107, 1),
+                      Color.fromRGBO(59, 21, 120, 1),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SeatScreen()));
+                  },
+                ),
+              ],
+            )
           ],
         ),
       ],

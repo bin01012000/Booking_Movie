@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'line_in_ticket.dart';
+
 class ListTicket extends StatefulWidget {
   const ListTicket({Key? key}) : super(key: key);
 
@@ -108,28 +110,28 @@ class _ListTicketState extends State<ListTicket> {
     return Container(
       height: 10,
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 150),
-        margin: EdgeInsets.symmetric(horizontal: 4.0),
+        duration: const Duration(milliseconds: 150),
+        margin: const EdgeInsets.symmetric(horizontal: 4.0),
         height: isActive ? 10 : 8.0,
         width: isActive ? 12 : 8.0,
         decoration: BoxDecoration(
           boxShadow: [
             isActive
                 ? BoxShadow(
-                    color: Color(0XFF2FB7B2).withOpacity(0.72),
+                    color: const Color(0XFF2FB7B2).withOpacity(0.72),
                     blurRadius: 4.0,
                     spreadRadius: 1.0,
-                    offset: Offset(
+                    offset: const Offset(
                       0.0,
                       0.0,
                     ),
                   )
-                : BoxShadow(
+                : const BoxShadow(
                     color: Colors.transparent,
                   )
           ],
           shape: BoxShape.circle,
-          color: isActive ? Color(0XFF6BC4C9) : Color(0XFFEAEAEA),
+          color: isActive ? const Color(0XFF6BC4C9) : const Color(0XFFEAEAEA),
         ),
       ),
     );
