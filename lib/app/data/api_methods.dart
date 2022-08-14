@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 // ignore: import_of_legacy_library_into_null_safe
+import 'package:booking_movie_ticket/app/data/api_response.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
@@ -26,9 +27,11 @@ class ApiMethods {
     }
 
     try {
-      http.Response response =
-          await http.get(Uri.parse(apiUrl), headers: _headers);
-
+      http.Response response = await http
+          .get(Uri.parse(apiUrl), headers: _headers)
+          .timeout(const Duration(seconds: 20),
+              onTimeout: () => http.Response('', 408));
+      ApiResponse.getResponse(response: response);
       return jsonDecode(utf8.decode(response.bodyBytes));
     } catch (e) {
       print("Server Error: $e");
@@ -46,7 +49,7 @@ class ApiMethods {
     try {
       http.Response response;
       response = await http.delete(Uri.parse(apiUrl), headers: _headers);
-      print(_headers);
+      ApiResponse.getResponse(response: response);
       var dataResult = jsonDecode(response.body);
 
       return dataResult;
@@ -60,6 +63,7 @@ class ApiMethods {
     required Map<String, dynamic>? data,
     required String apiUrl,
     bool hasToken = true,
+    isCheckTokenExpired = true,
     type = 'post',
   }) async {
     if (hasToken) {
@@ -79,6 +83,8 @@ class ApiMethods {
         response = await http.put(Uri.parse(apiUrl),
             body: json.encode(data), headers: _headers);
       }
+      ApiResponse.getResponse(
+          response: response, isCheckTokenExpired: isCheckTokenExpired);
       var dataResult = jsonDecode(response.body);
       return dataResult;
     } catch (e) {
@@ -91,6 +97,7 @@ class ApiMethods {
     required Map<String, dynamic>? data,
     required String apiUrl,
     bool hasToken = true,
+    isCheckTokenExpired = true,
   }) async {
     if (hasToken) {
       String? token = await storage.read(key: "token");
@@ -104,7 +111,8 @@ class ApiMethods {
 
       response = await http.patch(Uri.parse(apiUrl),
           body: json.encode(data), headers: _headers);
-
+      ApiResponse.getResponse(
+          response: response, isCheckTokenExpired: isCheckTokenExpired);
       var dataResult = jsonDecode(response.body);
       return dataResult;
     } catch (e) {

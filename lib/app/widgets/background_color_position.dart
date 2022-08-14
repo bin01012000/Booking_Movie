@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BackgroundColorPosition extends StatelessWidget {
   const BackgroundColorPosition({
@@ -13,19 +12,14 @@ class BackgroundColorPosition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints.expand(width: 10.sp, height: 10.sp),
-      width: 10.sp,
-      height: 10.sp,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: bgColor,
       ),
       child: BackdropFilter(
         filter: ImageFilter.blur(
-            sigmaX: 200, sigmaY: 200, tileMode: TileMode.clamp),
+            sigmaX: 140, sigmaY: 140, tileMode: TileMode.mirror),
         child: Container(
-          width: 10.sp,
-          height: 10.sp,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.transparent,
