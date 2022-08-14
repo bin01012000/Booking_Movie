@@ -1,4 +1,5 @@
 import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
+import 'package:booking_movie_ticket/app/presentation/views/login/login_screen.dart';
 
 import 'package:booking_movie_ticket/app/presentation/views/seat/seat_screen.dart';
 import 'package:booking_movie_ticket/app/widgets/date_time.dart';
@@ -89,7 +90,12 @@ class BodyDetail extends StatelessWidget {
                     Icons.more_vert,
                     color: Colors.white,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Login()),
+                    );
+                  },
                   background: const [],
                   height: 44.sp,
                   isDateTimeButton: false,
