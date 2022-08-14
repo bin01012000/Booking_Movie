@@ -50,7 +50,8 @@ class _ListTicketState extends State<ListTicket> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 40),
-        child: Column(
+        child: Wrap(
+          spacing: 20.sp,
           children: [
             AspectRatio(
               aspectRatio: 0.85,
@@ -67,10 +68,8 @@ class _ListTicketState extends State<ListTicket> {
                     return carouselView(index);
                   }),
             ),
-            SizedBox(
-              height: 10.sp,
-            ),
             Container(
+              margin: EdgeInsets.only(top: 20.sp),
               color: Colors.black12,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -155,92 +154,95 @@ class _ListTicketState extends State<ListTicket> {
   }
 
   Widget carouselCard(DataModel data) {
-    return Center(
-      child: UnicornOutlineButton(
-        strokeWidth: 1,
-        radius: 20.sp,
-        gradient: const LinearGradient(
-          colors: [
-            Color.fromRGBO(96, 255, 202, 1),
-            Color.fromRGBO(96, 255, 202, 0)
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-        child: Container(
-          width: 250,
-          height: 460,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.sp),
-            image: DecorationImage(
-              image: AssetImage(data.imageName),
-              fit: BoxFit.cover,
+    return Container(
+      margin: EdgeInsets.only(top: 17.sp),
+      child: Center(
+        child: UnicornOutlineButton(
+          strokeWidth: 1,
+          radius: 20.sp,
+          gradient: const LinearGradient(
+            colors: [
+              Color.fromRGBO(96, 255, 202, 1),
+              Color.fromRGBO(96, 255, 202, 0)
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          child: Container(
+            width: 250,
+            height: 560,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.sp),
+              image: DecorationImage(
+                image: AssetImage(data.imageName),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                Container(
+                  width: 250,
+                  height: 132,
+                  decoration: BoxDecoration(
+                      color: const Color.fromRGBO(255, 255, 255, 0.6),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20.sp),
+                          bottomRight: Radius.circular(20.sp))),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 10.sp,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('Date: April 23'),
+                          SizedBox(
+                            width: 30.sp,
+                          ),
+                          const Text('Time: 6 p.m.')
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20.sp,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('Row: 2'),
+                          SizedBox(
+                            width: 75.sp,
+                          ),
+                          const Text('Seats: 9 , 10')
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 1.0, left: 30.0, right: 30.0),
+                        child: Container(
+                          width: 250.0,
+                          height: 50.0,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/Code barre.png'),
+                                  fit: BoxFit.contain)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              Container(
-                width: 250,
-                height: 132,
-                decoration: BoxDecoration(
-                    color: const Color.fromRGBO(255, 255, 255, 0.6),
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20.sp),
-                        bottomRight: Radius.circular(20.sp))),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 10.sp,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('Date: April 23'),
-                        SizedBox(
-                          width: 30.sp,
-                        ),
-                        const Text('Time: 6 p.m.')
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20.sp,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('Row: 2'),
-                        SizedBox(
-                          width: 75.sp,
-                        ),
-                        const Text('Seats: 9 , 10')
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 1.0, left: 30.0, right: 30.0),
-                      child: Container(
-                        width: 250.0,
-                        height: 50.0,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image:
-                                    AssetImage('assets/images/Code barre.png'),
-                                fit: BoxFit.contain)),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          onPressed: () {},
+          background: [],
+          height: 460,
+          isDateTimeButton: true,
+          width: 250,
         ),
-        onPressed: () {},
-        background: [],
-        height: 460,
-        isDateTimeButton: true,
-        width: 250,
       ),
     );
   }

@@ -102,7 +102,7 @@ class MobileTicket extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  SizedBox(height: 30.sp),
+                  SizedBox(height: 20.sp),
                   Text(
                     'Once you buy a movie ticket simply scan the barcode to acces to your movie.',
                     style: AppTextStyle.st17500,

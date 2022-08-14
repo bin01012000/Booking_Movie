@@ -35,6 +35,7 @@ class _TimeButtonState extends State<TimeButton> {
     return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
       Expanded(
         child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
           child: Wrap(
             spacing: 20.sp,
             children: _fakeData

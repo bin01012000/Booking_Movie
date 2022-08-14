@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ListItem {
   String isSelected;
@@ -96,13 +97,13 @@ class _MyGridViewState extends State<MyGridView> {
   _getImage(String status) {
     switch (status) {
       case "AVAILABLE":
-        return Image.asset("assets/icons/SeatAvailable.png");
+        return SvgPicture.asset("assets/icons/seatavaiable.svg");
       case "RESERVED":
-        return Image.asset("assets/icons/SeatReserved.png");
+        return SvgPicture.asset("assets/icons/seatreseved.svg");
       case "SELECTED":
-        return Image.asset("assets/icons/SeatSelected.png");
+        return SvgPicture.asset("assets/icons/seatselected.svg");
       default:
-        return Image.asset("assets/icons/SeatAvailable.png");
+        return SvgPicture.asset("assets/icons/seatavaiable.svg");
     }
   }
 }
