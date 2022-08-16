@@ -2,8 +2,9 @@ import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_styl
 import 'package:flutter/material.dart';
 
 class DescriptionTextWidget extends StatefulWidget {
-  const DescriptionTextWidget({Key? key, required this.text}) : super(key: key);
   final String text;
+
+  const DescriptionTextWidget({Key? key, required this.text}) : super(key: key);
 
   @override
   _DescriptionTextWidgetState createState() => _DescriptionTextWidgetState();
