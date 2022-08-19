@@ -49,6 +49,7 @@ class _UnicornOutlineButtonState extends State<UnicornOutlineButton> {
           borderRadius: BorderRadius.circular(widget._radius),
           onTap: widget._callback,
           child: Container(
+            clipBehavior: Clip.hardEdge,
             width: widget._width,
             height: widget._height,
             margin: EdgeInsets.only(left: 1.sp, right: 1.sp, top: 1.sp),
@@ -66,7 +67,7 @@ class _UnicornOutlineButtonState extends State<UnicornOutlineButton> {
                 borderRadius: BorderRadius.circular(widget._radius)),
             constraints: BoxConstraints(minWidth: 40.sp, minHeight: 40.sp),
             child: Row(
-              mainAxisSize: MainAxisSize.min,
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 widget._child,

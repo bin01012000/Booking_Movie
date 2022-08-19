@@ -107,7 +107,7 @@ class MobileTicket extends StatelessWidget {
                     style: AppTextStyle.st17500,
                     textAlign: TextAlign.center,
                   ),
-                  Ticket(),
+                  const Ticket(),
                 ],
               ),
             ),

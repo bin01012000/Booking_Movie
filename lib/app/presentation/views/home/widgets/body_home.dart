@@ -1,5 +1,4 @@
 import 'package:booking_movie_ticket/app/presentation/bloc/home/home_bloc.dart';
-import 'package:booking_movie_ticket/app/presentation/response/response_banner.dart';
 import 'package:booking_movie_ticket/app/presentation/response/response_movie.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/widgets/banner_home.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/widgets/one_content_home.dart';

@@ -1,12 +1,11 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gallery_3d/gallery3d.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../widgets/unicorn_outline_button.dart';
 
 class Ticket extends StatefulWidget {
-  Ticket({Key? key}) : super(key: key);
+  const Ticket({Key? key}) : super(key: key);
 
   @override
   _TicketState createState() => _TicketState();
@@ -205,8 +204,8 @@ Widget carouselCard(DataModel data) {
           alignment: Alignment.bottomCenter,
           children: [
             Container(
-              width: 250,
-              height: 132,
+              clipBehavior: Clip.hardEdge,
+              height: 132.sp,
               decoration: BoxDecoration(
                   color: const Color.fromRGBO(255, 255, 255, 0.6),
                   borderRadius: BorderRadius.only(
@@ -245,7 +244,7 @@ Widget carouselCard(DataModel data) {
                     padding: const EdgeInsets.only(
                         top: 1.0, left: 30.0, right: 30.0),
                     child: Container(
-                      width: 250.0,
+                      width: double.infinity,
                       height: 50.0,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
@@ -260,10 +259,10 @@ Widget carouselCard(DataModel data) {
         ),
       ),
       onPressed: () {},
-      background: [],
-      height: 460,
+      background: const [],
+      height: 460.sp,
       isDateTimeButton: true,
-      width: 250,
+      width: 250.sp,
     ),
   );
 }
