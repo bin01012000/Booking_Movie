@@ -1,4 +1,3 @@
-import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
 import 'package:booking_movie_ticket/app/presentation/repository/auth_repository.dart';
 import 'package:booking_movie_ticket/app/presentation/views/login/widgets/body_login.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,4 @@
 import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
-import 'package:booking_movie_ticket/app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/login/login_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/repository/auth_repository.dart';
 import 'package:booking_movie_ticket/app/widgets/raise_button.dart';
@@ -21,13 +20,43 @@ class _BodyLoginState extends State<BodyLogin> {
   Widget build(BuildContext context) {
     final _emailController = TextEditingController();
     final _passwordController = TextEditingController();
+
     _onSubmitLogin() {
       BlocProvider.of<LoginBloc>(context, listen: false).add(LoginButtonPressed(
           email: _emailController.text, password: _passwordController.text));
     }
 
+    String? _validateEmail(String? value) {
+      String pattern =
+          r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+          r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+          r"{0,253}[a-zA-Z0-9])?)*$";
+      RegExp regex = RegExp(pattern);
+      if (value == null || value.isEmpty || !regex.hasMatch(value)) {
+        return 'Enter a valid email address';
+      } else {
+        return null;
+      }
+    }
+
+    String? _validatePassword(String? value) {
+      if (value == null || value.isEmpty) {
+        return 'Password can\'t empty';
+      } else if (value.length < 8) {
+        return 'Password must not be less than 8 characters';
+      } else {
+        return null;
+      }
+    }
+
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
+        if (state is LoginSuccess) {
+          WidgetsBinding.instance!.addPostFrameCallback((_) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/homeview', (route) => false);
+          });
+        }
         return Container(
           alignment: Alignment.center,
           child: Padding(
@@ -45,6 +74,8 @@ class _BodyLoginState extends State<BodyLogin> {
                     focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.white)),
                   ),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) => _validateEmail(value),
                 ),
                 TextFormField(
                   controller: _passwordController,
@@ -58,10 +89,12 @@ class _BodyLoginState extends State<BodyLogin> {
                     focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: Colors.white)),
                   ),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) => _validatePassword(value),
                 ),
                 RaisedGradientButton(
                   child: state is LoginLoading
-                      ? SpinKitChasingDots(
+                      ? SpinKitThreeBounce(
                           size: 30.sp,
                           color: Colors.white,
                         )

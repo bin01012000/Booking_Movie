@@ -1,6 +1,9 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:booking_movie_ticket/app/common/utils/value/styles/theme.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/auth/auth_bloc.dart';
+import 'package:booking_movie_ticket/app/presentation/bloc/banner/banner_bloc.dart';
+import 'package:booking_movie_ticket/app/presentation/bloc/home/home_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/login/login_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/repository/auth_repository.dart';
 import 'package:booking_movie_ticket/app/route/app_pages.dart';
@@ -46,11 +49,13 @@ class MyApp extends StatelessWidget {
             BlocProvider<LoginBloc>(
                 create: (context) => LoginBloc(
                     authRepository: authRepository, authBloc: authBloc)),
+            BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
+            BlocProvider<BannerBloc>(create: (context) => BannerBloc()),
           ],
           child: MaterialApp(
             title: 'Booking Movie Ticket',
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(primaryColor: Colors.transparent),
+            theme: AppTheme.theme,
             initialRoute: AppPages.initial,
             routes: AppPages.routes,
           ),
