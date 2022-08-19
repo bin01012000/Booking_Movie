@@ -1,4 +1,3 @@
-import 'package:booking_movie_ticket/app/presentation/views/ticket/widgets/list_tickets.dart';
 import 'package:booking_movie_ticket/app/widgets/unicorn_outline_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +5,7 @@ import 'package:gradient_like_css/gradient_like_css.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../common/utils/value/styles/app_text_style.dart';
+import 'widgets/ticket.dart';
 
 class MobileTicket extends StatelessWidget {
   const MobileTicket({Key? key}) : super(key: key);
@@ -107,7 +107,7 @@ class MobileTicket extends StatelessWidget {
                     style: AppTextStyle.st17500,
                     textAlign: TextAlign.center,
                   ),
-                  const ListTicket(),
+                  Ticket(),
                 ],
               ),
             ),
