@@ -1,63 +1,74 @@
+import 'package:booking_movie_ticket/app/presentation/bloc/home/home_bloc.dart';
+import 'package:booking_movie_ticket/app/presentation/response/response_banner.dart';
+import 'package:booking_movie_ticket/app/presentation/response/response_movie.dart';
+import 'package:booking_movie_ticket/app/presentation/views/home/widgets/banner_home.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/widgets/one_content_home.dart';
-import 'package:booking_movie_ticket/app/presentation/views/home/widgets/search_input.dart';
+import 'package:booking_movie_ticket/app/widgets/try_again.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class BodyHome extends StatelessWidget {
+class BodyHome extends StatefulWidget {
   const BodyHome({Key? key}) : super(key: key);
 
-  static const List<Map<String, String>> _fakeData = [
-    {"index": "1", "img": "assets/images/test.png"},
-    {"index": "2", "img": "assets/images/test2.png"},
-    {"index": "3", "img": "assets/images/test3.png"},
-    {"index": "4", "img": "assets/images/test4.png"},
-    {"index": "5", "img": "assets/images/test5.png"},
-  ];
+  @override
+  State<BodyHome> createState() => _BodyHomeState();
+}
 
-  static const List<Map<String, String>> _fakeDataComing = [
-    {"index": "1", "img": "assets/images/test6.png"},
-    {"index": "2", "img": "assets/images/test7.png"},
-    {"index": "3", "img": "assets/images/test8.png"},
-    {"index": "4", "img": "assets/images/test9.png"},
-    {"index": "5", "img": "assets/images/test10.png"},
-  ];
-
-  static const List<Map<String, String>> _fakeDataTop = [
-    {"index": "1", "img": "assets/images/test11.png"},
-    {"index": "2", "img": "assets/images/test12.png"},
-    {"index": "3", "img": "assets/images/test13.png"},
-    {"index": "4", "img": "assets/images/test14.png"},
-    {"index": "5", "img": "assets/images/test.png"},
-  ];
+class _BodyHomeState extends State<BodyHome> {
+  final _homeBloc = HomeBloc();
+  @override
+  void initState() {
+    super.initState();
+    _homeBloc.add(GetMovie());
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: SafeArea(
-        child: Wrap(
-          runSpacing: 20.sp,
-          children: const <Widget>[
-            SearchInput(),
-            OneContentHome(
-              fakeData: _fakeData,
-              title: "Now Playing",
+    return BlocBuilder<HomeBloc, HomeState>(
+      bloc: _homeBloc,
+      builder: (context, state) {
+        if (state is HomeLoading || state is HomeInitial) {
+          return SpinKitChasingDots(color: Colors.white, size: 30.sp);
+        } else if (state is HomeFailure) {
+          return TryAgain(
+            press: () {
+              _homeBloc.add(GetMovie());
+            },
+          );
+        } else if (state is HomeSuccess) {
+          ResponseMovie _data = state.responseMovie;
+          return SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: SafeArea(
+              child: Wrap(
+                runSpacing: 20.sp,
+                children: <Widget>[
+                  const BannerHome(),
+                  OneContentHome(
+                    data: _data,
+                    title: "Now Playing",
+                  ),
+                  OneContentHome(
+                    data: _data,
+                    title: "Coming Soon",
+                  ),
+                  OneContentHome(
+                    data: _data,
+                    title: "Top movies",
+                  ),
+                  OneContentHome(
+                    data: _data,
+                    title: "Top movies",
+                  ),
+                ],
+              ),
             ),
-            OneContentHome(
-              fakeData: _fakeDataComing,
-              title: "Coming Soon",
-            ),
-            OneContentHome(
-              fakeData: _fakeDataTop,
-              title: "Top movies",
-            ),
-            OneContentHome(
-              fakeData: _fakeDataTop,
-              title: "Top movies",
-            ),
-          ],
-        ),
-      ),
+          );
+        }
+        return Container();
+      },
     );
   }
 }

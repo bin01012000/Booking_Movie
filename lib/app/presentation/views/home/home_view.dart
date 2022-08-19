@@ -1,3 +1,4 @@
+import 'package:booking_movie_ticket/app/common/utils/extensions.dart';
 import 'package:booking_movie_ticket/app/presentation/views/detail/detail_screen.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/home_screen.dart';
 import 'package:booking_movie_ticket/app/presentation/views/seat/seat_screen.dart';
@@ -48,30 +49,18 @@ class _HomeViewState extends State<HomeView>
       backgroundColor: Colors.transparent,
       bottomNavigationBar: CircleNavBar(
         inactiveIcons: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 20.sp),
-            child: SvgPicture.asset(
-              "assets/icons/home.svg",
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 20.sp),
-            child: SvgPicture.asset(
-              "assets/icons/address.svg",
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 20.sp),
-            child: SvgPicture.asset(
-              "assets/icons/menu.svg",
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 20.sp),
-            child: SvgPicture.asset(
-              "assets/icons/user.svg",
-            ),
-          ),
+          SvgPicture.asset(
+            "assets/icons/home.svg",
+          ).paddingOnly(bottom: 20.sp),
+          SvgPicture.asset(
+            "assets/icons/address.svg",
+          ).paddingOnly(bottom: 20.sp),
+          SvgPicture.asset(
+            "assets/icons/menu.svg",
+          ).paddingOnly(bottom: 20.sp),
+          SvgPicture.asset(
+            "assets/icons/user.svg",
+          ).paddingOnly(bottom: 20.sp),
         ],
         activeIcons: const [
           OneActiveIconBottomNavbar(svg: "assets/icons/home.svg"),

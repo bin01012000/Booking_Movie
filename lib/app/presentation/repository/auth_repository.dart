@@ -1,6 +1,6 @@
 import 'package:booking_movie_ticket/app/data/api_methods.dart';
 import 'package:booking_movie_ticket/app/data/api_urls.dart';
-import 'package:booking_movie_ticket/app/presentation/views/login/model/response_login.dart';
+import 'package:booking_movie_ticket/app/presentation/response/response_login.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class AuthRepository {

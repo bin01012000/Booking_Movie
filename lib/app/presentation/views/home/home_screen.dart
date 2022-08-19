@@ -25,8 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Container(
-        width: 1.sw,
-        height: 1.sh,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(50.sp)),
           gradient: linearGradient(170.53, ['#2e1371 2.71%', '#130b2b 97.75%']),

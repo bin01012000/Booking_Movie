@@ -22,7 +22,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             authBloc.add(LoggedIn(token: res.data!.accessToken.toString()));
             emit(LoginSuccess());
           } else {
-            emit(LoginFailure(error: 'error'));
+            emit(const LoginFailure(error: 'error'));
           }
         } catch (e) {
           emit(LoginFailure(error: e.toString()));
@@ -32,21 +32,4 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     });
   }
 
-  Stream<LoginState> _mapEventToState(
-      LoginEvent event, Emitter<LoginState> emit) async* {
-    if (event is LoginButtonPressed) {
-      yield LoginLoading();
-      try {
-        final res = await authRepository.login(
-            email: event.email, password: event.password);
-        if (res.errorCode == 0 && res.data != null) {
-          authBloc.add(LoggedIn(token: res.data!.accessToken.toString()));
-        }
-        yield LoginSuccess();
-      } catch (e) {
-        yield LoginFailure(error: e.toString());
-        rethrow;
-      }
-    }
-  }
 }
