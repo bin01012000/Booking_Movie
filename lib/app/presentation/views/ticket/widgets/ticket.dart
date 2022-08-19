@@ -20,10 +20,10 @@ List<DataModel> dataList = [
 int selectedindex = 0;
 
 class DataModel {
-  final String imageName;
+  final String imageTicket;
 
   DataModel(
-    this.imageName,
+    this.imageTicket,
   );
 }
 
@@ -197,7 +197,7 @@ Widget carouselCard(DataModel data) {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.sp),
           image: DecorationImage(
-            image: AssetImage(data.imageName),
+            image: AssetImage(data.imageTicket),
             fit: BoxFit.cover,
           ),
         ),
