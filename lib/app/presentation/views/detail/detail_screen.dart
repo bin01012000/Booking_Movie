@@ -2,12 +2,16 @@ import 'package:booking_movie_ticket/app/presentation/views/detail/widgets/body_
 import 'package:booking_movie_ticket/app/widgets/general_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Object? args = ModalRoute.of(context)!.settings.arguments;
+    int i = int.parse(args.toString());
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
@@ -16,7 +20,9 @@ class DetailScreen extends StatelessWidget {
         child: const GeneralAppBar(title: ""),
       ),
       backgroundColor: const Color.fromARGB(255, 23, 12, 53),
-      body: const BodyDetail(),
+      body: BodyDetail(
+        idMovie: i,
+      ),
     );
   }
 }

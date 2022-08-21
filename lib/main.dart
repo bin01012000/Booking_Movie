@@ -3,6 +3,7 @@
 import 'package:booking_movie_ticket/app/common/utils/value/styles/theme.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/auth/auth_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/banner/banner_bloc.dart';
+import 'package:booking_movie_ticket/app/presentation/bloc/detail/detail_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/home/home_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/login/login_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/repository/auth_repository.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
                     authRepository: authRepository, authBloc: authBloc)),
             BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
             BlocProvider<BannerBloc>(create: (context) => BannerBloc()),
+            BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
           ],
           child: MaterialApp(
             title: 'Booking Movie Ticket',

@@ -3,12 +3,20 @@ import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_styl
 import 'package:booking_movie_ticket/app/presentation/response/response_movie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class OneContentHome extends StatelessWidget {
-  const OneContentHome({Key? key, required this.data, required this.title})
+class OneContentHome extends StatefulWidget {
+  OneContentHome({Key? key, required this.data, required this.title})
       : super(key: key);
   final ResponseMovie data;
   final String title;
+
+  @override
+  State<OneContentHome> createState() => _OneContentHomeState();
+}
+
+class _OneContentHomeState extends State<OneContentHome> {
+  int? idMovie;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +24,7 @@ class OneContentHome extends StatelessWidget {
       runSpacing: 20.sp,
       children: [
         Text(
-          title,
+          widget.title,
           style: AppTextStyle.st17700,
         ),
         SingleChildScrollView(
@@ -25,11 +33,13 @@ class OneContentHome extends StatelessWidget {
           child: Wrap(
             spacing: 20.sp,
             direction: Axis.horizontal,
-            children: data.dataMovie!
+            children: widget.data.dataMovie!
                 .map(
                   (e) => GestureDetector(
                     behavior: HitTestBehavior.translucent,
-                    onTap: () => Navigator.pushNamed(context, '/detail'),
+                    onTap: () => {
+                      Navigator.pushNamed(context, '/detail', arguments: e.id),
+                    },
                     child: Image.network(
                       e.imageOfMovie![0].url.toString(),
                       fit: BoxFit.cover,

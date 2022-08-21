@@ -52,7 +52,7 @@ class _BodyLoginState extends State<BodyLogin> {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         if (state is LoginSuccess) {
-          WidgetsBinding.instance!.addPostFrameCallback((_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             Navigator.pushNamedAndRemoveUntil(
                 context, '/homeview', (route) => false);
           });

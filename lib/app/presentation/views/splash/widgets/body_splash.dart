@@ -15,12 +15,12 @@ class BodySplash extends StatelessWidget {
       builder: (context, state) {
         Future.delayed(const Duration(milliseconds: 1500), () {
           if (state is AuthAuthenticated) {
-            WidgetsBinding.instance!.addPostFrameCallback((_) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
               Navigator.pushNamedAndRemoveUntil(
                   context, '/homeview', (route) => false);
             });
           } else if (state is AuthUnauthenticated) {
-            WidgetsBinding.instance!.addPostFrameCallback((_) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
               Navigator.pushNamedAndRemoveUntil(
                   context, '/login', (route) => false);
             });
