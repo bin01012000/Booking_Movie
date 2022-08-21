@@ -48,7 +48,7 @@ class _DateTimeBodyState extends State<DateTimeBody> {
 
   Widget _buildPageItem(int index) {
     return UnicornOutlineButton(
-      strokeWidth: 1,
+      strokeWidth: 2.sp,
       radius: 10.sp,
       gradient: LinearGradient(
         colors: _selectedIndex == index
@@ -67,7 +67,7 @@ class _DateTimeBodyState extends State<DateTimeBody> {
       background: _selectedIndex == index
           ? [
               const Color.fromRGBO(182, 17, 107, 1),
-              const Color.fromRGBO(33, 35, 47, 1),
+              const Color.fromRGBO(46, 19, 113, 1),
             ]
           : [
               const Color.fromRGBO(46, 19, 113, 1),

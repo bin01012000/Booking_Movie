@@ -1,3 +1,4 @@
+import 'package:booking_movie_ticket/app/common/utils/extensions.dart';
 import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
 import 'package:booking_movie_ticket/app/widgets/button_buy.dart';
 import 'package:flutter/material.dart';
@@ -23,39 +24,35 @@ class BottomSeat extends StatelessWidget {
               ),
             ),
           ),
-          child: Padding(
-            padding: EdgeInsets.only(top: 52.sp, bottom: 52.sp, left: 33.sp),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildDetailSeat(
-                    "assets/icons/calendar.svg", "April 23, 2022", "6 p.m."),
-                SizedBox(height: 22.sp),
-                buildDetailSeat(
-                    "assets/icons/ticket.svg", "VIP Section", "Seat 9 ,10"),
-                SizedBox(height: 22.sp),
-                Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  spacing: 10.sp,
-                  children: [
-                    SvgPicture.asset(
-                      "assets/icons/cart.svg",
-                      width: 18.sp,
-                      height: 20.sp,
-                      fit: BoxFit.scaleDown,
-                    ),
-                    Text(
-                      "Total: \$30",
-                      style: AppTextStyle.st15400,
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              buildDetailSeat(
+                  "assets/icons/calendar.svg", "April 23, 2022", "6 p.m."),
+              SizedBox(height: 22.sp),
+              buildDetailSeat(
+                  "assets/icons/ticket.svg", "VIP Section", "Seat 9 ,10"),
+              SizedBox(height: 22.sp),
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 10.sp,
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/cart.svg",
+                    width: 18.sp,
+                    height: 20.sp,
+                    fit: BoxFit.scaleDown,
+                  ),
+                  Text(
+                    "Total: \$30",
+                    style: AppTextStyle.st15400,
+                  ),
+                ],
+              ),
+            ],
+          ).paddingOnly(top: 52.sp, bottom: 52.sp, left: 33.sp),
         ),
-        const Spacer(),
         Positioned(
           right: 15.sp,
           bottom: 70.sp,

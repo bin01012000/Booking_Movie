@@ -33,7 +33,6 @@ class BodyDetail extends StatelessWidget {
               stops: [0, 0.7],
             ),
           ),
-          padding: EdgeInsets.only(left: 1.sp, top: 0.sp),
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/imgDetail.jpeg"),

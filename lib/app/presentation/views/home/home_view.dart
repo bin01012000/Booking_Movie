@@ -1,8 +1,8 @@
 import 'package:booking_movie_ticket/app/common/utils/extensions.dart';
-import 'package:booking_movie_ticket/app/presentation/views/detail/detail_screen.dart';
+import 'package:booking_movie_ticket/app/presentation/views/discover/discover_screen.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/home_screen.dart';
-import 'package:booking_movie_ticket/app/presentation/views/seat/seat_screen.dart';
-import 'package:booking_movie_ticket/app/presentation/views/ticket/mobile_ticket_screen.dart';
+import 'package:booking_movie_ticket/app/presentation/views/menu/menu_screen.dart';
+import 'package:booking_movie_ticket/app/presentation/views/user/user_screen.dart';
 import 'package:booking_movie_ticket/app/widgets/circular_nav_bar.dart';
 import 'package:booking_movie_ticket/app/widgets/general_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +20,20 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView>
     with SingleTickerProviderStateMixin {
   int tabIndex = 0;
-  late TabController tabController =
-      TabController(length: 4, vsync: this, initialIndex: tabIndex);
+  late TabController tabController;
+
+  @override
+  void dispose() {
+    super.dispose();
+    tabController.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    tabController =
+        TabController(length: 4, vsync: this, initialIndex: tabIndex);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +54,9 @@ class _HomeViewState extends State<HomeView>
           controller: tabController,
           children: const [
             HomeScreen(),
-            DetailScreen(),
-            SeatScreen(),
-            MobileTicket(),
+            DiscoverScreen(),
+            MenuScreen(),
+            UserScreen(),
           ]),
       backgroundColor: Colors.transparent,
       bottomNavigationBar: CircleNavBar(
@@ -79,7 +91,6 @@ class _HomeViewState extends State<HomeView>
         onChanged: (int v) {
           tabIndex = v;
           tabController.animateTo(v);
-          setState(() {});
         },
       ),
     );

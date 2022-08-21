@@ -14,8 +14,8 @@ class TicketData extends StatelessWidget {
         Stack(
           children: [
             Container(
-              width: 350.0,
-              height: 260.0,
+              width: 350.sp,
+              height: 260.sp,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0.sp),
@@ -60,8 +60,8 @@ class TicketData extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 1.0, left: 30.0, right: 30.0),
           child: Container(
-            width: 250.0,
-            height: 50.0,
+            width: 250.sp,
+            height: 50.sp,
             decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/Code barre.png'),

@@ -1,3 +1,4 @@
+import 'package:booking_movie_ticket/app/common/utils/extensions.dart';
 import 'package:booking_movie_ticket/app/common/utils/value/app_color.dart';
 import 'package:booking_movie_ticket/app/presentation/views/seat/widgets/bottom_seat.dart';
 import 'package:booking_movie_ticket/app/presentation/views/seat/widgets/dot_status.dart';
@@ -29,38 +30,26 @@ class SeatScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 65.sp),
-                child: const Center(child: ArcPaintPage()),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 65.sp),
-                child: const MyGridView(),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 50.sp),
-                child: Wrap(
-                  spacing: 20.sp,
-                  children: <Widget>[
-                    const DotStatus(
-                      status: "Available",
-                      color: Colors.white,
-                    ),
-                    DotStatus(
-                      status: "Reserved",
-                      color: AppColors.red,
-                    ),
-                    DotStatus(
-                      status: "Selected",
-                      color: AppColors.green,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 34.sp),
-                child: const BottomSeat(),
-              ),
+              const Center(child: ArcPaintPage()).paddingOnly(top: 65.sp),
+              const MyGridView().paddingOnly(top: 65.sp),
+              Wrap(
+                spacing: 20.sp,
+                children: <Widget>[
+                  const DotStatus(
+                    status: "Available",
+                    color: Colors.white,
+                  ),
+                  DotStatus(
+                    status: "Reserved",
+                    color: AppColors.red,
+                  ),
+                  DotStatus(
+                    status: "Selected",
+                    color: AppColors.green,
+                  ),
+                ],
+              ).paddingOnly(top: 50.sp),
+              const BottomSeat().paddingOnly(top: 34.sp),
             ],
           ),
         ),
