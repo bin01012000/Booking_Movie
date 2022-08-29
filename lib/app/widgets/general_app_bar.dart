@@ -71,9 +71,7 @@ class GeneralAppBar extends StatelessWidget {
                 Icons.calendar_month_outlined,
                 color: Colors.white,
               ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/signup');
-              },
+              onPressed: () {},
               background: const [],
               height: 44.sp,
               isDateTimeButton: false,
