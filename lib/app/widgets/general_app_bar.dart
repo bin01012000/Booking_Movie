@@ -20,7 +20,7 @@ class GeneralAppBar extends StatelessWidget {
         automaticallyImplyLeading: false,
         leading: GestureDetector(
           behavior: HitTestBehavior.translucent,
-          onTap: () => Navigator.pop(context),
+          onTap: () => Navigator.of(context).pop(),
           child: Transform.translate(
             offset: Offset(20.sp, 0),
             child: UnicornOutlineButton(

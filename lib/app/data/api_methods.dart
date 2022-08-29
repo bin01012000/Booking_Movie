@@ -32,7 +32,8 @@ class ApiMethods {
           .timeout(const Duration(seconds: 20),
               onTimeout: () => http.Response('', 408));
       ApiResponse.getResponse(response: response);
-      return jsonDecode(utf8.decode(response.bodyBytes));
+      var dataresult = jsonDecode(response.body);
+      return dataresult;
     } catch (e) {
       print("Server Error: $e");
       return null;
@@ -83,8 +84,7 @@ class ApiMethods {
         response = await http.put(Uri.parse(apiUrl),
             body: json.encode(data), headers: _headers);
       }
-      ApiResponse.getResponse(
-          response: response, isCheckTokenExpired: isCheckTokenExpired);
+      ApiResponse.getResponse(response: response);
       var dataResult = jsonDecode(response.body);
       return dataResult;
     } catch (e) {
@@ -111,8 +111,7 @@ class ApiMethods {
 
       response = await http.patch(Uri.parse(apiUrl),
           body: json.encode(data), headers: _headers);
-      ApiResponse.getResponse(
-          response: response, isCheckTokenExpired: isCheckTokenExpired);
+      ApiResponse.getResponse(response: response);
       var dataResult = jsonDecode(response.body);
       return dataResult;
     } catch (e) {

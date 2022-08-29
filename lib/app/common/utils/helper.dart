@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class StringHelpers {
-  static String convertNull(String? a) {
-    if (a == null || a == '') {
+  static String convertNull(String? string) {
+    if (string == null || string == '') {
       return 'N/A';
     } else {
-      return a;
+      return string;
     }
   }
 

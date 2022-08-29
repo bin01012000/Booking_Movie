@@ -1,7 +1,6 @@
 import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
 import 'package:booking_movie_ticket/app/presentation/views/menu/widgets/body_menu.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gradient_like_css/gradient_like_css.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -11,7 +10,6 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(50.sp)),
         gradient: linearGradient(170.53, ['#2e1371 2.71%', '#130b2b 97.75%']),
       ),
       child: Scaffold(

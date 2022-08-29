@@ -2,6 +2,7 @@ import 'package:booking_movie_ticket/app/presentation/views/detail/detail_screen
 import 'package:booking_movie_ticket/app/presentation/views/home/home_screen.dart';
 import 'package:booking_movie_ticket/app/presentation/views/home/home_view.dart';
 import 'package:booking_movie_ticket/app/presentation/views/login/login_screen.dart';
+import 'package:booking_movie_ticket/app/presentation/views/movie_theater/movie_theater_screen.dart';
 import 'package:booking_movie_ticket/app/presentation/views/seat/seat_screen.dart';
 import 'package:booking_movie_ticket/app/presentation/views/splash/splash_screen.dart';
 import 'package:booking_movie_ticket/app/presentation/views/ticket/mobile_ticket_screen.dart';
@@ -21,5 +22,6 @@ class AppPages {
         '/mobileticket': (context) => const MobileTicket(),
         '/seats': (context) => const SeatScreen(),
         '/splash': (context) => const SplashScreen(),
+        '/movie-theater': (context) => const MovieTheaterScreen(),
       };
 }

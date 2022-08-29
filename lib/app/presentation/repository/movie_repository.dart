@@ -3,7 +3,7 @@ import 'package:booking_movie_ticket/app/data/api_urls.dart';
 import 'package:booking_movie_ticket/app/presentation/response/response_banner.dart';
 import 'package:booking_movie_ticket/app/presentation/response/response_movie.dart';
 
-class HomeRepository {
+class MovieRepository {
   Future<ResponseMovie> getAllMovie() async {
     Map<String, dynamic>? dataResponse =
         await ApiMethods().get(apiUrl: ApiUrl.getAllMovie, hasToken: false);
@@ -22,13 +22,13 @@ class HomeRepository {
     return ResponseBanner.fromJson(dataResponse);
   }
 
-  static final HomeRepository _instance = HomeRepository._internal();
+  static final MovieRepository _instance = MovieRepository._internal();
 
-  factory HomeRepository() {
+  factory MovieRepository() {
     return _instance;
   }
 
-  HomeRepository._internal();
+  MovieRepository._internal();
 }
 
 class _NetworkError extends Error {}

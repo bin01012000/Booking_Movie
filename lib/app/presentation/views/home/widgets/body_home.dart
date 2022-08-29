@@ -1,54 +1,41 @@
-import 'package:booking_movie_ticket/app/presentation/bloc/banner/banner_bloc.dart';
-import 'package:booking_movie_ticket/app/presentation/bloc/home/home_bloc.dart';
-import 'package:booking_movie_ticket/app/presentation/response/response_movie.dart';
-import 'package:booking_movie_ticket/app/presentation/views/home/widgets/banner_home.dart';
-import 'package:booking_movie_ticket/app/presentation/views/home/widgets/one_content_home.dart';
-import 'package:booking_movie_ticket/app/widgets/try_again.dart';
+import 'package:booking_movie_ticket/app/common/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class BodyHome extends StatefulWidget {
+import '../../../../widgets/try_again.dart';
+import '../../../bloc/banner/banner_bloc.dart';
+import '../../../bloc/movie/movie_bloc.dart';
+import '../../../response/response_movie.dart';
+import 'banner_home.dart';
+import 'one_content_home.dart';
+
+class BodyHome extends StatelessWidget {
   const BodyHome({Key? key}) : super(key: key);
 
   @override
-  State<BodyHome> createState() => _BodyHomeState();
-}
-
-class _BodyHomeState extends State<BodyHome>
-    with AutomaticKeepAliveClientMixin {
-  final _homeBloc = HomeBloc();
-  final _bannerBloc = BannerBloc();
-  @override
-  void initState() {
-    super.initState();
-    _homeBloc.add(GetMovie());
-  }
-
-  @override
   Widget build(BuildContext context) {
-    super.build(context);
+    MovieBloc _movieBloc = MovieBloc();
+    BannerBloc _bannerBloc = BannerBloc();
     RefreshController _homeRefreshController = RefreshController();
-    return BlocBuilder<HomeBloc, HomeState>(
-      bloc: _homeBloc,
+    return BlocBuilder<MovieBloc, MovieState>(
+      bloc: _movieBloc,
+      buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
         _onRefresh() {
-          _homeBloc.add(GetMovie());
+          _movieBloc.add(GetMovie());
           _bannerBloc.add(GetBanner());
           _homeRefreshController.refreshCompleted();
         }
 
-        if (state is HomeLoading || state is HomeInitial) {
+        if (state is MovieInitial) {
+          _movieBloc.add(GetMovie());
           return SpinKitChasingDots(color: Colors.white, size: 30.sp);
-        } else if (state is HomeFailure) {
-          return TryAgain(
-            press: () {
-              _homeBloc.add(GetMovie());
-            },
-          );
-        } else if (state is HomeSuccess) {
+        } else if (state is MovieLoading) {
+          return SpinKitChasingDots(color: Colors.white, size: 30.sp);
+        } else if (state is MovieSuccess) {
           ResponseMovie _data = state.responseMovie;
           return SmartRefresher(
             controller: _homeRefreshController,
@@ -81,15 +68,16 @@ class _BodyHomeState extends State<BodyHome>
                     ),
                   ],
                 ),
-              ),
+              ).paddingOnly(top: 10),
             ),
           );
         }
-        return Container();
+        return TryAgain(
+          press: () {
+            _movieBloc.add(GetMovie());
+          },
+        );
       },
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

@@ -1,6 +1,7 @@
 import 'package:booking_movie_ticket/app/common/utils/extensions.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/banner/banner_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/response/response_banner.dart';
+import 'package:booking_movie_ticket/app/widgets/image_network_custom.dart';
 import 'package:booking_movie_ticket/app/widgets/try_again.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,7 +56,7 @@ class _BannerHomeState extends State<BannerHome> {
             spacing: 20.sp,
             children: [
               AspectRatio(
-                aspectRatio: 3,
+                aspectRatio: 2.5,
                 child: PageView.builder(
                   itemCount: data.length,
                   physics: const ClampingScrollPhysics(),
@@ -66,9 +67,8 @@ class _BannerHomeState extends State<BannerHome> {
                     });
                   },
                   itemBuilder: (context, index) {
-                    return Image.network(
-                      data[index].url.toString(),
-                      fit: BoxFit.cover,
+                    return ImageNetworkCustom(
+                      url: data[index].url.toString(),
                     ).paddingSymmetric(horizontal: 8.sp);
                   },
                 ),

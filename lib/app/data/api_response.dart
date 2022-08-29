@@ -4,20 +4,49 @@ import 'errors/api_error.dart';
 abstract class ApiResponse {
   static getResponse(
       {http.Response? response, bool isCheckTokenExpired = true}) {
-    final status = response!.statusCode;
-    if (status == 200 || status == 201 || status == 202) {
-      return null;
-    } else if (status == 400 && isCheckTokenExpired == false) {
-      throw ApiError(
-        type: ErrorType.unauthorize,
-        error: 'Wrong password or email.',
-      );
-    } else if (status == 401) {
-    } else if (response.statusCode == 408) {
-      throw ApiError(
-          type: ErrorType.connectTimeout, error: 'Connect time out.');
-    } else if (response.statusCode <= 599 && response.statusCode >= 500) {
-      // throw ApiError(type: ErrorType.response, error: 'Server Error.');
+    switch (response!.statusCode) {
+      case 200:
+      case 201:
+      case 202:
+        return null;
+      case 400:
+        return serverError("Bad Request");
+      case 401:
+        return serverError("Unauthorized");
+      case 404:
+        return serverError("Not found");
+      case 408:
+        return serverError("Request Timeout");
+      case 500:
+        return serverError('Internal Server Error');
+      case 501:
+        return serverError('Not Implemented');
+      case 502:
+        return serverError('Bad Gateway');
+      case 503:
+        return serverError('Service Unavailable');
+      case 504:
+        return serverError('Gateway Timeout');
+      case 505:
+        return serverError('HTTP Version Not Supported');
+      case 506:
+        return serverError('Variant Also Negotiates');
+      case 507:
+        return serverError('Insufficient Storage');
+      case 508:
+        return serverError('Loop Detected');
+      case 509:
+        return serverError('Bandwidth Limit Exceeded');
+      case 510:
+        return serverError('Not Extended');
+      case 511:
+        return serverError('Network Authentication Required');
+      default:
+        return serverError('No Code');
     }
+  }
+
+  static ApiError serverError(String error) {
+    return ApiError(type: ErrorType.response, error: error);
   }
 }

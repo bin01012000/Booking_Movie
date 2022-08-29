@@ -23,7 +23,7 @@ class _BodyUserState extends State<BodyUser> {
   printToken() async {
     FlutterSecureStorage _storage = const FlutterSecureStorage();
     final token = await _storage.read(key: 'token');
-    print(token.toString());
+    debugPrint(token.toString());
   }
 
   @override

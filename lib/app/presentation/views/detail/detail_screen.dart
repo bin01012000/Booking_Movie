@@ -8,6 +8,9 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Object? args = ModalRoute.of(context)!.settings.arguments;
+    int i = int.parse(args.toString());
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
@@ -16,7 +19,9 @@ class DetailScreen extends StatelessWidget {
         child: const GeneralAppBar(title: ""),
       ),
       backgroundColor: const Color.fromARGB(255, 23, 12, 53),
-      body: const BodyDetail(),
+      body: BodyDetail(
+        idMovie: i,
+      ),
     );
   }
 }

@@ -1,13 +1,13 @@
-part of 'home_bloc.dart';
+part of 'movie_bloc.dart';
 
-abstract class HomeEvent extends Equatable {
-  const HomeEvent();
+abstract class MovieEvent extends Equatable {
+  const MovieEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class GetMovie extends HomeEvent {
+class GetMovie extends MovieEvent {
   @override
   List<Object> get props => [];
 
