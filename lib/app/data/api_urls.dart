@@ -10,5 +10,8 @@ class ApiUrl {
   static String getAllMovie = "$domain/movie";
   static String getBanner = "$domain/get-list-banner";
   static String getDetailMovie = "$domain/movie/[IDMOVIE]";
+  static String getScheduleMovie =
+      "$domain/get-list-schedule?movieId=[IDMOVIE]";
+
   static String getListMovieTheater = "$domain/get-list-movieTheater";
 }
