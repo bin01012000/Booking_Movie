@@ -40,12 +40,14 @@ class _OneContentHomeState extends State<OneContentHome> {
                     onTap: () => {
                       Navigator.pushNamed(context, '/detail', arguments: e.id),
                     },
-                    child: Image.network(
-                      e.imageOfMovie![0].url.toString(),
-                      fit: BoxFit.cover,
-                      width: 100.sp,
-                      height: 130.sp,
-                    ),
+                    child: (e.imageOfMovie!.isNotEmpty)
+                        ? Image.network(
+                            e.imageOfMovie![0].url.toString(),
+                            fit: BoxFit.cover,
+                            width: 100.sp,
+                            height: 130.sp,
+                          )
+                        : const Text(""),
                   ),
                 )
                 .toList(),

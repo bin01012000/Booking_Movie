@@ -6,13 +6,18 @@ import 'package:booking_movie_ticket/app/presentation/bloc/banner/banner_bloc.da
 import 'package:booking_movie_ticket/app/presentation/bloc/detail/detail_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/home/home_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/login/login_bloc.dart';
+import 'package:booking_movie_ticket/app/presentation/bloc/signup/signup_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/repository/auth_repository.dart';
+import 'package:booking_movie_ticket/app/presentation/repository/signup_repository.dart';
+import 'package:booking_movie_ticket/app/presentation/views/signup/signup_screen.dart';
 import 'package:booking_movie_ticket/app/route/app_pages.dart';
 import 'package:booking_movie_ticket/simple_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'app/presentation/bloc/schedule/schedule_bloc.dart';
 
 const String MATERIAL_SCREEN = "/material_screen";
 const String CUPERTINO_SCREEN = "/cupertino_screen";
@@ -38,6 +43,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final AuthRepository authRepository = AuthRepository();
     final AuthBloc authBloc = AuthBloc(authRepository);
+    final SignUpRepository signupRepository = SignUpRepository();
+
     return ScreenUtilInit(
       useInheritedMediaQuery: true,
       designSize: const Size(390, 844),
@@ -53,6 +60,10 @@ class MyApp extends StatelessWidget {
             BlocProvider<HomeBloc>(create: (context) => HomeBloc()),
             BlocProvider<BannerBloc>(create: (context) => BannerBloc()),
             BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
+            BlocProvider<ScheduleBloc>(create: (context) => ScheduleBloc()),
+            BlocProvider<SignUpBloc>(
+                create: (context) =>
+                    SignUpBloc(signupRepository: signupRepository)),
           ],
           child: MaterialApp(
             title: 'Booking Movie Ticket',

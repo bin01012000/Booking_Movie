@@ -92,6 +92,15 @@ class _BodyLoginState extends State<BodyLogin> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) => _validatePassword(value),
                 ),
+                InkWell(
+                  child: Text(
+                    "Create a new account.",
+                    style: AppTextStyle.st14300,
+                  ),
+                  onTap: (() {
+                    Navigator.pushNamed(context, '/signup');
+                  }),
+                ),
                 RaisedGradientButton(
                   child: state is LoginLoading
                       ? SpinKitThreeBounce(

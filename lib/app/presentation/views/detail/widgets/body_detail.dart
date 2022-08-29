@@ -1,9 +1,10 @@
 import 'package:booking_movie_ticket/app/common/utils/value/styles/app_text_style.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/detail/detail_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/response/response_detail_movie.dart';
-import 'package:booking_movie_ticket/app/widgets/date_time.dart';
+import 'package:booking_movie_ticket/app/presentation/views/detail/widgets/date_time.dart';
+import 'package:booking_movie_ticket/app/widgets/image_network_custom.dart';
 import 'package:booking_movie_ticket/app/widgets/raise_button.dart';
-import 'package:booking_movie_ticket/app/widgets/time_button.dart';
+import 'package:booking_movie_ticket/app/presentation/views/detail/widgets/time_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,7 +45,8 @@ class _BodyDetailState extends State<BodyDetail> {
           );
         } else if (state is DetailSuccess) {
           ResponseDetailMovie _data = state.responseMovie;
-          return Stack(
+          return SingleChildScrollView(
+              child: Stack(
             children: <Widget>[
               Container(
                   width: 1.sw,
@@ -61,76 +63,67 @@ class _BodyDetailState extends State<BodyDetail> {
                     ),
                   ),
                   padding: EdgeInsets.only(left: 1.sp, top: 0.sp),
-                  child: Image.network(
-                      _data.data!.imageOfMovie![0].url.toString(),
-                      fit: BoxFit.fill)),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Center(
-                    child: Text(_data.data!.name.toString(),
-                        style: AppTextStyle.st20700),
-                  ),
-                  // Center(
-                  //   child: Text(_data.data!.name.toString(),
-                  //       style: AppTextStyle.st14700),
-                  // ),
-                  SizedBox(
-                    height: 10.sp,
-                  ),
-                  SizedBox(
-                      height: 100.sp,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Center(
-                          child: DescriptionTextWidget(
-                            text: _data.data!.description.toString(),
-                          ),
-                        ),
-                      )),
-                  SizedBox(
-                    height: 10.sp,
-                  ),
-                  Center(
-                    child: Text(
-                      "Select date and time",
-                      style: AppTextStyle.st17500,
+                  child: ImageNetworkCustom(
+                      url: _data.data!.imageOfMovie![0].url.toString())),
+              Padding(
+                padding: EdgeInsets.only(top: 250.sp, bottom: 20.sp),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  runSpacing: 20.sp,
+                  children: [
+                    Center(
+                      child: Text(
+                          _data.data!.name!
+                              .substring(0, (_data.data!.name!.indexOf(' '))),
+                          style: AppTextStyle.st20700),
                     ),
-                  ),
-                  SizedBox(
-                    height: 30.sp,
-                  ),
-                  SizedBox(
-                      height: 90.sp,
-                      width: 350.sp,
-                      child: const DateTimeBody()),
-                  SizedBox(
-                    height: 30.sp,
-                  ),
-                  SizedBox(
-                      height: 40.sp, width: 350.sp, child: const TimeButton()),
-                  SizedBox(
-                    height: 20.sp,
-                  ),
-                  RaisedGradientButton(
-                    child: Text('Reservation', style: AppTextStyle.st17500),
-                    gradient: const LinearGradient(
-                      colors: <Color>[
-                        Color.fromRGBO(182, 17, 107, 1),
-                        Color.fromRGBO(59, 21, 120, 1),
-                      ],
+                    Center(
+                      child: Text(
+                          _data.data!.name!
+                              .substring(_data.data!.name!.indexOf(' '))
+                              .toString(),
+                          style: AppTextStyle.st14700),
                     ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/seats');
-                    },
-                  ),
-                  SizedBox(
-                    height: 20.sp,
-                  ),
-                ],
-              ),
+                    Center(
+                      child: DescriptionTextWidget(
+                        text: _data.data!.description.toString(),
+                      ),
+                    ),
+                    Center(
+                      child: Text(
+                        "Select date and time",
+                        style: AppTextStyle.st17500,
+                      ),
+                    ),
+                    SizedBox(
+                        height: 90.sp,
+                        width: 350.sp,
+                        child: DateTimeBody(
+                          id: widget.idMovie,
+                        )),
+                    SizedBox(
+                        height: 40.sp,
+                        width: 350.sp,
+                        child: TimeButton(
+                          id: widget.idMovie,
+                        )),
+                    RaisedGradientButton(
+                      child: Text('Reservation', style: AppTextStyle.st17500),
+                      gradient: const LinearGradient(
+                        colors: <Color>[
+                          Color.fromRGBO(182, 17, 107, 1),
+                          Color.fromRGBO(59, 21, 120, 1),
+                        ],
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/seats');
+                      },
+                    ),
+                  ],
+                ),
+              )
             ],
-          );
+          ));
         }
         return Container();
       },
