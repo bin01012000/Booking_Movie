@@ -1,3 +1,4 @@
+import 'package:booking_movie_ticket/app/presentation/views/signup/widgets/alert_success.dart';
 import 'package:booking_movie_ticket/app/presentation/views/signup/widgets/chosses_birthday.dart';
 import 'package:booking_movie_ticket/app/presentation/views/signup/widgets/chosses_gender.dart';
 import 'package:flutter/material.dart';
@@ -66,10 +67,7 @@ class BodySignUp extends StatelessWidget {
     return BlocBuilder<SignUpBloc, SignUpState>(
       builder: (context, state) {
         if (state is SignUpSuccess) {
-          WidgetsBinding.instance?.addPostFrameCallback((_) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, '/login', (route) => false);
-          });
+          return const AlertSuccess();
         }
         return SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -77,16 +75,10 @@ class BodySignUp extends StatelessWidget {
               alignment: Alignment.center,
               child: Padding(
                 padding: EdgeInsets.only(
-                    top: 50.sp, left: 50.sp, right: 50.sp, bottom: 50.sp),
+                    top: 30.sp, left: 50.sp, right: 50.sp, bottom: 50.sp),
                 child: Wrap(
                   runSpacing: 30.sp,
                   children: [
-                    Center(
-                      child: Text(
-                        'Sign Up Page',
-                        style: AppTextStyle.st18600,
-                      ),
-                    ),
                     TextFormField(
                       controller: _emailController,
                       style: const TextStyle(color: Colors.white, fontSize: 15),

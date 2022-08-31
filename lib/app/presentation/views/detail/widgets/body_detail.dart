@@ -71,18 +71,11 @@ class _BodyDetailState extends State<BodyDetail> {
                   alignment: WrapAlignment.center,
                   runSpacing: 20.sp,
                   children: [
-                    Center(
-                      child: Text(
-                          _data.data!.name!
-                              .substring(0, (_data.data!.name!.indexOf(' '))),
+                    SizedBox(
+                      width: 1.sw,
+                      child: Text(_data.data!.name!.toString(),
+                          textAlign: TextAlign.center,
                           style: AppTextStyle.st20700),
-                    ),
-                    Center(
-                      child: Text(
-                          _data.data!.name!
-                              .substring(_data.data!.name!.indexOf(' '))
-                              .toString(),
-                          style: AppTextStyle.st14700),
                     ),
                     Center(
                       child: DescriptionTextWidget(

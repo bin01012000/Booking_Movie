@@ -37,7 +37,7 @@ class BodyLogin extends StatelessWidget {
     String? _validatePassword(String? value) {
       if (value == null || value.isEmpty) {
         return 'Password can\'t empty';
-      } else if (value.length < 8) {
+      } else if (value.length < 6) {
         return 'Password must not be less than 8 characters';
       } else {
         return null;
@@ -87,6 +87,13 @@ class BodyLogin extends StatelessWidget {
                           borderSide: BorderSide(color: Colors.white)),
                     ),
                     validator: (value) => _validatePassword(value),
+                  ),
+                  InkWell(
+                    child: Text("Create new account.",
+                        style: AppTextStyle.st15400),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/sign-up');
+                    },
                   ),
                   RaisedGradientButton(
                     child: state is LoginLoading

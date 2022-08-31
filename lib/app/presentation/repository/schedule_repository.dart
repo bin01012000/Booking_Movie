@@ -1,7 +1,6 @@
 import '../../data/api_methods.dart';
 import '../../data/api_urls.dart';
 import '../response/response_schedule.dart';
-import '../response/response_detail_movie.dart';
 
 class ScheduleRepository {
   Future<ScheduleMovie> getScheduleMovie(int id) async {

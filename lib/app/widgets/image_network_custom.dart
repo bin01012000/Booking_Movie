@@ -45,7 +45,7 @@ class _ImageNetworkCustomState extends State<ImageNetworkCustom> {
       loadingBuilder: (BuildContext context, Widget child,
           ImageChunkEvent? loadingProgress) {
         if (loadingProgress == null) {
-          WidgetsBinding.instance?.addPostFrameCallback((_) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
             if (mounted) {
               setState(() => loading = false);
             }
