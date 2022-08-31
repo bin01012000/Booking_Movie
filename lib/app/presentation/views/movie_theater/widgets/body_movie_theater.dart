@@ -16,7 +16,12 @@ class BodyMovieTheater extends StatelessWidget {
     // MovieTheaterBloc _movieTheaterBloc = MovieTheaterBloc();
     return BlocProvider<MovieTheaterCubit>(
       create: (context) => MovieTheaterCubit(),
-      child: BlocBuilder<MovieTheaterCubit, MovieTheaterState>(
+      child: BlocConsumer<MovieTheaterCubit, MovieTheaterState>(
+        listener: (context, state) {
+          if (state is MovieTheaterFailure) {
+            // SnackBar(content: "content")
+          }
+        },
         // bloc: _movieTheaterBloc,
         builder: (BuildContext context, state) {
           if (state is MovieTheaterInitial) {

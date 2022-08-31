@@ -14,10 +14,25 @@ class SignUp extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: linearGradient(170, ['#2e1371 2.71%', '#130b2b 97.75%']),
       ),
-      child: const Scaffold(
+      child: Scaffold(
+        appBar: AppBar(
+          bottomOpacity: 0.0,
+          elevation: 0.0,
+          centerTitle: true,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: linearGradient(170, ['#2e1371 2.71%']),
+            ),
+          ),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () => Navigator.of(context).pop(false),
+          ),
+          title: const Text('Sign Up Page'),
+        ),
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
-        body: BodySignUp(),
+        body: const BodySignUp(),
       ),
     );
   }

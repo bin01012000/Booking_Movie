@@ -75,7 +75,7 @@ class _BannerHomeState extends State<BannerHome> {
               ),
               Container(
                 margin: EdgeInsets.only(top: 15.sp),
-                color: Colors.black12,
+                color: Colors.transparent,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List<Widget>.generate(

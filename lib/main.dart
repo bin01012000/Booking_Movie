@@ -43,16 +43,16 @@ class MyApp extends StatelessWidget {
             BlocProvider<AuthBloc>(
                 create: (context) =>
                     AuthBloc(authRepository)..add(AppStarted())),
-            BlocProvider<LoginBloc>(
-                create: (context) => LoginBloc(
-                    authRepository: authRepository, authBloc: authBloc)),
-            BlocProvider<MovieBloc>(create: (context) => MovieBloc()),
-            BlocProvider<BannerBloc>(create: (context) => BannerBloc()),
-            BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
-            BlocProvider<ScheduleBloc>(create: (context) => ScheduleBloc()),
-            BlocProvider<SignUpBloc>(
-                create: (context) =>
-                    SignUpBloc(signupRepository: signupRepository)),
+            // BlocProvider<LoginBloc>(
+            //     create: (context) => LoginBloc(
+            //         authRepository: authRepository, authBloc: authBloc)),
+            // BlocProvider<MovieBloc>(create: (context) => MovieBloc()),
+            // BlocProvider<BannerBloc>(create: (context) => BannerBloc()),
+            // BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
+            // BlocProvider<ScheduleBloc>(create: (context) => ScheduleBloc()),
+            // BlocProvider<SignUpBloc>(
+            //     create: (context) =>
+            //         SignUpBloc(signupRepository: signupRepository)),
           ],
           child: MaterialApp(
             title: 'Booking Movie Ticket',

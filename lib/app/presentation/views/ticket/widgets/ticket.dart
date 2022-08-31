@@ -77,7 +77,7 @@ class _TicketState extends State<Ticket> with TickerProviderStateMixin {
       ),
       Container(
         margin: EdgeInsets.only(top: 20.sp),
-        color: Colors.black12,
+        color: Colors.transparent,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List<Widget>.generate(
