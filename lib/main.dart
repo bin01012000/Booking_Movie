@@ -4,10 +4,8 @@ import 'package:booking_movie_ticket/app/presentation/bloc/banner/banner_bloc.da
 import 'package:booking_movie_ticket/app/presentation/bloc/detail/detail_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/login/login_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/bloc/movie/movie_bloc.dart';
-import 'package:booking_movie_ticket/app/presentation/bloc/movie_theater/movie_theater_bloc.dart';
 import 'package:booking_movie_ticket/app/presentation/repository/auth_repository.dart';
 import 'package:booking_movie_ticket/app/presentation/repository/signup_repository.dart';
-import 'package:booking_movie_ticket/app/presentation/views/signup/signup_screen.dart';
 import 'package:booking_movie_ticket/app/route/app_pages.dart';
 import 'package:booking_movie_ticket/simple_observer.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +21,7 @@ void main() {
   Paint.enableDithering = true;
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-
   Bloc.observer = SimpleBlocObserver();
-
   runApp(const MyApp());
 }
 
@@ -53,8 +49,6 @@ class MyApp extends StatelessWidget {
             BlocProvider<MovieBloc>(create: (context) => MovieBloc()),
             BlocProvider<BannerBloc>(create: (context) => BannerBloc()),
             BlocProvider<DetailBloc>(create: (context) => DetailBloc()),
-            BlocProvider<MovieTheaterBloc>(
-                create: (context) => MovieTheaterBloc()),
             BlocProvider<ScheduleBloc>(create: (context) => ScheduleBloc()),
             BlocProvider<SignUpBloc>(
                 create: (context) =>

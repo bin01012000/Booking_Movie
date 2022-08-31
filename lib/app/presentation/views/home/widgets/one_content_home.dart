@@ -4,7 +4,6 @@ import 'package:booking_movie_ticket/app/presentation/response/response_movie.da
 import 'package:booking_movie_ticket/app/widgets/image_network_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class OneContentHome extends StatefulWidget {
   const OneContentHome({Key? key, required this.data, required this.title})

@@ -10,8 +10,9 @@ abstract class ScheduleEvent extends Equatable {
 class GetScheduleMovie extends ScheduleEvent {
   @override
   List<Object> get props => [];
-  final int id;
-  const GetScheduleMovie({required this.id});
+  final int idMovie;
+  final int idTheater;
+  const GetScheduleMovie({required this.idMovie, required this.idTheater});
 
   @override
   String toString() => 'Getting Schedule movie';

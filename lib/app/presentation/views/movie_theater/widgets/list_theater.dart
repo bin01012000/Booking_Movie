@@ -14,16 +14,17 @@ class ListTheater extends StatelessWidget {
         direction: Axis.vertical,
         runSpacing: 10.sp,
         children: res.movie != null && res.movie!.isNotEmpty
-            ? [const Text("List movie theater is empty")]
-            : res.movie!
+            ? res.movie!
                 .map(
                   (el) => OneTheater(
                     addressTheater: el.address.toString(),
                     nameTheater: el.tenRap.toString(),
                     urlImage: el.movieTheaterImage!,
+                    idTheater: el.id!.toInt(),
                   ),
                 )
-                .toList(),
+                .toList()
+            : [const Text("List movie theater is empty")],
       ),
     );
   }

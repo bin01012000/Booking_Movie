@@ -14,6 +14,6 @@ class ScheduleLoading extends ScheduleState {}
 class ScheduleFailure extends ScheduleState {}
 
 class ScheduleSuccess extends ScheduleState {
-  final ScheduleMovie responseSchedule;
+  final ResponseScheduledMovie responseSchedule;
   const ScheduleSuccess(this.responseSchedule);
 }

@@ -1,19 +1,17 @@
-import 'package:booking_movie_ticket/app/widgets/unicorn_outline_button.dart';
-
-class ScheduleMovie {
+class ResponseScheduledMovie {
   int? errCode;
   String? errMessage;
-  List<Data>? data;
+  List<DataScheduledMovie>? data;
 
-  ScheduleMovie({this.errCode, this.errMessage, this.data});
+  ResponseScheduledMovie({this.errCode, this.errMessage, this.data});
 
-  ScheduleMovie.fromJson(Map<String, dynamic> json) {
+  ResponseScheduledMovie.fromJson(Map<String, dynamic> json) {
     errCode = json['errCode'];
     errMessage = json['errMessage'];
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <DataScheduledMovie>[];
       json['data'].forEach((v) {
-        data!.add(Data.fromJson(v));
+        data!.add(DataScheduledMovie.fromJson(v));
       });
     }
   }
@@ -29,7 +27,7 @@ class ScheduleMovie {
   }
 }
 
-class Data {
+class DataScheduledMovie {
   int? id;
   String? startTime;
   String? endTime;
@@ -41,7 +39,7 @@ class Data {
   ShowtimeMovie? showtimeMovie;
   RoomShowTime? roomShowTime;
 
-  Data(
+  DataScheduledMovie(
       {this.id,
       this.startTime,
       this.endTime,
@@ -53,7 +51,7 @@ class Data {
       this.showtimeMovie,
       this.roomShowTime});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  DataScheduledMovie.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     startTime = json['startTime'];
     endTime = json['endTime'];
@@ -88,8 +86,6 @@ class Data {
     }
     return data;
   }
-
-  map(UnicornOutlineButton Function(dynamic e) param0) {}
 }
 
 class ShowtimeMovie {
@@ -216,7 +212,7 @@ class MovieOfType {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
     data['createdAt'] = createdAt;
@@ -389,7 +385,7 @@ class MovieTheaterRoom {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['tenRap'] = tenRap;
     data['soDienThoai'] = soDienThoai;

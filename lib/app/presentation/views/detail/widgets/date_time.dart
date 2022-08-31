@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 
 import '../../../../common/utils/value/styles/app_text_style.dart';
 import '../../../bloc/schedule/schedule_bloc.dart';
-import '../../../response/response_schedule.dart';
+import '../../../response/response_scheduled_movie.dart';
 
 class DateTimeBody extends StatefulWidget {
   const DateTimeBody({Key? key, required this.id}) : super(key: key);
@@ -29,7 +29,7 @@ class _DateTimeBodyState extends State<DateTimeBody> {
   @override
   void initState() {
     super.initState();
-    _scheduleBloc.add(GetScheduleMovie(id: widget.id));
+    // _scheduleBloc.add(GetScheduleMovie(id: widget.id));
   }
 
   @override
@@ -42,11 +42,11 @@ class _DateTimeBodyState extends State<DateTimeBody> {
           } else if (state is ScheduleFailure) {
             return TryAgain(
               press: () {
-                _scheduleBloc.add(GetScheduleMovie(id: widget.id));
+                // _scheduleBloc.add(GetScheduleMovie(id: widget.id));
               },
             );
           } else if (state is ScheduleSuccess) {
-            List<Data>? _data = state.responseSchedule.data;
+            List<DataScheduledMovie>? _data = state.responseSchedule.data;
 
             return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
               Expanded(

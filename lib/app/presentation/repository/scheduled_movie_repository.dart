@@ -1,19 +1,21 @@
 import '../../data/api_methods.dart';
 import '../../data/api_urls.dart';
-import '../response/response_schedule.dart';
-import '../response/response_detail_movie.dart';
+import '../response/response_scheduled_movie.dart';
 
 class ScheduleRepository {
-  Future<ScheduleMovie> getScheduleMovie(int id) async {
+  Future<ResponseScheduledMovie> getScheduleMovie(
+      int idMovie, int idTheater) async {
     Map<String, dynamic>? dataResponse = await ApiMethods().get(
-        apiUrl: ApiUrl.getScheduleMovie.replaceAll('[IDMOVIE]', id.toString()),
+        apiUrl: ApiUrl.getScheduleMovie
+            .replaceAll('[IDMOVIE]', idMovie.toString())
+            .replaceAll('[IDTHEATER]', idTheater.toString()),
         hasToken: false);
 
     if (dataResponse == null) {
       throw _NetworkError();
     }
 
-    return ScheduleMovie.fromJson(dataResponse);
+    return ResponseScheduledMovie.fromJson(dataResponse);
   }
 
   static final ScheduleRepository _instance = ScheduleRepository._internal();
